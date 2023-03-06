@@ -1,0 +1,72 @@
+# スターティングハンドレンジ
+
+[GTO Wizard](https://gtowizard.com/)における特定の設定でのプリフロップの各アクションのハンドレンジを簡略化したものです。混合戦略となるハンドはレンジを上位方向に丸めたり、一定の範囲内で同じ頻度で分布するハンド群は扱いやすい分数に丸めています。
+
+<Callout>
+**このハンドレンジのために用いたGTOWizardでの設定**
+
+- 6-max NL 500
+- 100BB
+- General 2.5x / GTO 3BET
+</Callout>
+
+| ポジション | アクション | ハンドレンジ |
+|:---:|:---:|:--- |
+| UTG | 2BET<br/>_(≦17%)_ | 77+, $\frac14$(22+) A3s+, AKo, K7s+, KJo+, Q9s+, QJo+, J9s+, T9s, $\frac27$(87s, 76s, 65s, 54s) |
+| HJ | 2BET<br/>_(≦21%)_ | 66+, $\frac13$(22+) A2s+, ATo+, K6s+, KTo+, Q8s+, QTo+, J9s+, T9s+, $\frac12$(T8s), 98s, $\frac13$(87s, 76s, 65s, 54s) |
+| | 3BET vs UTG<br/>_(≦8%)_ | 99+, ATs+, $\frac45$(A5s-A4s), AQs+, KTs+, $\frac12$(KQo), QJs |
+| CO | 2BET<br/>_(≦28%)_ | 44+, $\frac23$(33-22), A2s+, A8o+, K4s+, KTo+, Q6s+, QTo+, J7s+, JTo+, T8s+, 97s+, 87s, $\frac12$(76s, 65s, 54s) |
+| | 3BET vs UTG<br/>_(≦9%)_ | 99+, ATs+, A5s-A4s, AQo+, KTs+, $\frac12$(KQs), QJs, $\frac14$(87s, 76s, 54s), $\frac12$(65s) |
+| BTN | 2BET<br/>_(≦44%)_ | 22+, A2s+ A4o+, K2s+, K8o+, Q2s+, Q9o+, J4s+, J9o+, T6s+, T8o+, 96s+, 98o, 85s+, 75s+, 64s+, 54s |
+| | 3BET vs UTG<br/>_(≦7%)_ | JJ+, ATs+, A5s-A4s, AKo, KJs+, KQo, QJs, $\frac12$(JTs, T9s, 65s) |
+| | Call vs UTG<br/>_(≦6%)_ | 55+, A8s+, AQo, KTs, QTs, $\frac12$(98s, 87s, 76s, 54s) |
+| SB | 2BET<br/>_(≦34%)_ | ATs+, $\frac34$(A9s-A2s+), A5o+, $\frac13$(A4o-A3o) KTs+, $\frac34$(K9s-K2s), $\frac34$(KQo-K9o), $\frac23$(K8o-K7o), QTs+, $\frac34$(Q9s-Q2s), $\frac34$(QJo-Q9o), JTs $\frac23$(J9s-J3s), $\frac34$(JTo-J9o), $\frac12$(T4s+), $\frac34$(T8o+), 97s-96s, $\frac13$(98s, 95s), $\frac34$(98o), $\frac34$(85s+), $\frac34$(74s+), $\frac34$(64s+), $\frac23$(53s+) |
+| | Limp<br/>_(≦18%)_ | $\frac14$(A9s-A2s+), $\frac23$(A4o-A3o) $\frac14$(K9s-K2s), $\frac14$(KQo-K9o), $\frac13$(K8o-K7o), $\frac14$(Q9s-Q2s), $\frac14$(QJo-Q9o), $\frac13$(J9s-J3s), J2s, $\frac14$(JTo-J9o), $\frac12$(T4s+), $\frac14$(T8o+), $\frac23$(98s, 95s), $\frac14$(98o), $\frac14$(85s+), $\frac14$(74s+), $\frac14$(64s+), $\frac13$(53s+) |
+| | 3BET vs UTG<br/>_(≦6%)_ | QQs+, $\frac12$(99s+), AQs+, $\frac12$(AJs-JTs, A5s-A4s), AKo+, $\frac12$(AQo+), KQs+, $\frac34$(KJs-KTs), QJs, $\frac12$(65s+) |
+| | 3BET vs BTN<br/>_(≦14%)_ | 77+, A7s+, A5s-A4s, ATo+, K9s+, KQo, $\frac12$(KJo-KTo), Q9s+, J9s+, T9s, $\frac12$(T8s) |
+| BB | 3BET vs UTG<br/>_(≦6%)_ | QQ+, AQs+, $\frac14$(AJs, A6s-A3s), $\frac23$(AKo), $\frac23$(KQs-KJs), $\frac15$(K9s-K4s), $\frac13$(KQo), $\frac12$(QJs), $\frac14$(QTs-Q8s), $\frac15$(JTs, T9s, 87s, 76s, 65s, 54s) |
+| | Call vs UTG<br/>_(≦20%)_ | JJ-22 $\frac34$(AJs, A6s-A3s), ATs-A7s, A2s, ATo+, $\frac13$(KQs-KJs), KTs-K4s, $\frac23$(KJo), $\frac12$(QJs), $\frac34$(QTs-Q8s), $\frac45$(JTs), J9s-J8s, $\frac45$(T9s), T8s-T7s, 98s-96s, $\frac45$(87s, 85s), 86s, $\frac45$(76s), 75s, $\frac45$(65s) 64s, $\frac45$(54s), 53s, 43s $\frac12$(52s, 42s) |
+| | 2BET vs SB<br/>_(≦38%)_ | 77+, $\frac12$(66-55), A8s+, A5s-A3s, AJo+, $\frac12$(ATo-A9o, A3o-A2o), KQs-K9s, $\frac12$(K6s), KQo, $\frac12$(A7o-K2o), QTs+, $\frac12$(Q9o-Q2o), J9s+, $\frac12$(J9-J6o), $\frac13$(J5o-J2o), T9s, $\frac23$(T6s-T3s), 98s-92s, 87s-84s, 82s, 76s, 74s-73s, $\frac12$(65s) $\frac13$(63s-62s), 54s, $\frac12$(32s) |
+| | 3BET vs SB<br/>_(≦16%)_ | TT+, $\frac13$(99-88), AJs+, A5s-A4s, AQo+, A2o, KQs, $\frac12$(KJs-K9s, K6s), $\frac14$(QJs-Q9s), $\frac12$(J9s+), T9s, $\frac25$(T8s, T4s-T2s), 98s, 87s, 76s, $\frac23$(65s, 54s) |
+| | Call vs SB<br/>_(≦41%)_ | 77+, $\frac12$(66-55), A8s+, A5s-A3s, AJo+, $\frac12$(ATo-A9o, A3o-A2o), KQs-K9s, $\frac12$(K6s), KQo, $\frac12$(A7o-K2o), QTs+, $\frac12$(Q9o-Q2o), J9s+, $\frac12$(J9-J6o), $\frac13$(J5o-J2o), T9s, $\frac23$(T6s-T3s), 98s-92s, 87s-84s, 82s, 76s, 74s-73s, $\frac12$(65s) $\frac13$(63s-62s), 54s, $\frac12$(32s) |
+
+<Callout>
+2BETはオープンレイズを指します。
+</Callout>
+
+## 分析
+
+- 最も参加率の高くなるポジションはBTNとBBで、BTNは実に44%のハンドレンジでオープンします。BBはUTGのオープンにも計26%の割合でコール以上、SBのオープンには計54%の割合でコール以上のアクションを取ります。
+- 広く知られているとおり、キッカーが消えやすくストレートも作れない@Ax@7xと@Ax@6xは低く評価されており、オープン時もコール時も参加頻度が低く設定されています。
+- レイズとコールをミックスしたレンジでは、たとえば「AKs-A8sで常にレイズしてA7s-A2sで常にコールする」といったアクションからレンジが特定しやすい構成にはしません。代わりに「AKs-A2sすべてにおいて一定割合でレイズ、一定割合でコール」という混ぜ方をします。強いハンドはレイズの比重が大きく弱いハンドはレイズの比重が小さいといった形に段階的に変化させていくものの、これによってハンドレンジが絞り込まれないように対策・軽減しています。
+- SBは低頻度の@Ax@Axや@Kx@Kxを含めたハンドレンジでリンプします。これによりSBのリンプのレンジキャップが軽減され、BBのレイズに対抗できるようになる (@Ax@Axや@Kx@Kxはこれに対して必ず3BETする) ことでSBのリンプレンジのEVが支えられます。
+
+## 4BETや5BETレンジをどう決定するか
+
+TBD
+
+## 9-maxになるとどう変化するか
+
+スターティングハンドレンジを一から全て覚え直すのは大変なので、6-maxのものとの差分だけ取り上げて比較してみます。
+
+- 「自分の後ろに何人のプレイヤーが控えているか」というベースでハンドレンジがスライドするのではなく、ほぼ全てのポジションで参加率が少しずつ低下するようにハンドレンジが変化します。
+- アーリーポジションでは、6-maxに比べて9-maxはオフスートやスーテッドコネクターがハンドレンジから除かれ、頻度で2BETしていたローポケットペアの頻度が大きく低下する形で参加率を調整します。
+  - その次に除かれるのはローキッカーの@A=や@K=で、最弱のものはハンドそのものが除かれながら (例: HJ相当のポジションでのA2oは100%フォールドに変わる)  、中-低程度の強さのものはまばらに参加率が低下します (例: HJ相当のポジションでのK8s-K5sはどれも変わらず2BETするものの、頻度が下がる) 。
+- レイトポジションになるほどハンドレンジの変化は小さく、BTNやSB、BBのハンドレンジはほとんど変化しません。
+  - しかし、アーリーポジションのハンドレンジが比較的強くなることで、コール割合や3BET頻度は低下する形で変化します。
+
+## Effective 200BBになるとどう変化するか
+
+TBD
+
+<Callout intent="warning">
+GTO WizardのPremium Planで解放されるので、課金することがあれば分析して書き記します。
+</Callout>
+
+## 6BB 2BETになるとどう変化するか
+
+TBD
+
+<Callout intent="warning">
+GTO Wizardでは対応しておらず、PIOSolverなどのツールが必要になるのでいずれ分析して書き記します。
+</Callout>

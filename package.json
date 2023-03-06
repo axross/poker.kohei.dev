@@ -1,0 +1,43 @@
+{
+  "name": "poker.kohei.dev",
+  "version": "0.0.1",
+  "description": "Nextra docs template",
+  "scripts": {
+    "lint": "textlint pages/**/*.mdx pages/*.mdx",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axross/poker.kohei.dev.git"
+  },
+  "author": "Kohei Asai <yo@kohei.dev>",
+  "bugs": {
+    "url": "https://github.com/axross/poker.kohei.dev/issues"
+  },
+  "homepage": "https://github.com/axross/poker.kohei.dev#readme",
+  "dependencies": {
+    "lucide-react": "^0.122.0",
+    "next": "^13.0.6",
+    "nextra": "^2.2.17",
+    "nextra-theme-docs": "^2.2.17",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^1.10.0"
+  },
+  "devDependencies": {
+    "@napi-rs/simple-git": "^0.1.8",
+    "@textlint/textlint-plugin-markdown": "^12.5.0",
+    "@types/node": "18.11.10",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
+    "textlint": "^12.5.1",
+    "textlint-rule-preset-ja-spacing": "^2.2.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+    "typescript": "^4.9.3",
+    "unist-builder": "^2.0.3",
+    "unist-util-visit-parents": "^3.1.1"
+  }
+}
