@@ -1,23 +1,16 @@
-# Nextra Docs Template 
+# poker.kohei.dev
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+This is a documentation website explains the strategy of Texas Hold'em poker with the mathmatical approarch and practical game theory. I have no plan to translate the contents for now but please make an issue if you want to have a look in your language.
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+[poker.kohei.dev](https://poker.kohei.dev) のコンテンツリポジトリです。
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+- 質問や指摘などあれば[Discussions](https://github.com/axross/poker.kohei.dev/discussions)へお願いします。
+- 誤字・脱字など修正はPull Request経由でお願いします。大歓迎です。
 
-## Quick Start
-
-Click the button to clone this repository and deploy it on Vercel:
-
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
-
-## Local Development
-
-First, run `pnpm i` to install the dependencies.
-
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
+poker.kohei.devはNext.jsとNextraを利用しています。
 
 ## License
 
-This project is licensed under the MIT License.
+参考にするのは自由ですが、このリポジトリの内容はNo Licenseです。個人利用・商用問わず使用・改変・複製・再配布を禁じます。内容を引用したい場合は [poker.kohei.dev](https://poker.kohei.dev) へのリンクと、poker.kohei.devから引用していることを明示していただければ可能です。
+
+また、あくまで個人の理解にすぎず、内容の正確さについて保証できないことをご容赦ください。
