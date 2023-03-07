@@ -1,22 +1,20 @@
 {
   "name": "poker.kohei.dev",
-  "version": "0.0.1",
-  "description": "Nextra docs template",
+  "author": "Kohei Asai <yo@kohei.dev>",
+  "homepage": "https://github.com/axross/poker.kohei.dev#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axross/poker.kohei.dev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axross/poker.kohei.dev/issues"
+  },
   "scripts": {
     "lint": "textlint pages/**/*.mdx pages/*.mdx",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/axross/poker.kohei.dev.git"
-  },
-  "author": "Kohei Asai <yo@kohei.dev>",
-  "bugs": {
-    "url": "https://github.com/axross/poker.kohei.dev/issues"
-  },
-  "homepage": "https://github.com/axross/poker.kohei.dev#readme",
   "dependencies": {
     "lucide-react": "^0.122.0",
     "next": "^13.0.6",
