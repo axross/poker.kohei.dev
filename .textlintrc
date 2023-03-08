@@ -4,8 +4,12 @@
       "extensions": [".mdx"]
     }
   },
-  "filters": {},
+  "filters": {
+    "comments": true
+  },
   "rules": {
-    "preset-ja-technical-writing": true
+    "preset-ja-technical-writing": {
+      "max": 120
+    }
   }
 }
