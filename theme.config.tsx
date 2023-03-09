@@ -1,6 +1,7 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
 import React from "react";
 import { PlayingCard } from "./components/playing-card";
+import { RankPair } from "./components/rank-pair";
 import { Callout } from "./components/callout";
 
 const config: DocsThemeConfig = {
@@ -24,6 +25,7 @@ const config: DocsThemeConfig = {
   components: {
     Callout,
     PlayingCard,
+    RankPair,
   },
 };
 
