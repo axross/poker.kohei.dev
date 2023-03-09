@@ -4,7 +4,11 @@ module.exports = {
     "./components/**/*.{ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'card-symbol': ['"Azeret Mono"', 'ui-monospace'],
+      }
+    },
   },
   plugins: [],
   darkMode: "class",
