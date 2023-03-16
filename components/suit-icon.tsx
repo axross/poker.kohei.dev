@@ -1,8 +1,27 @@
 import { FC, SVGAttributes } from "react";
 
-export type SuitIconProps = SVGAttributes<SVGElement>;
+export interface SuitIconProps extends SuitIconBaseProps {
+  suit?: "spade" | "heart" | "diamond" | "club";
+}
 
-export const SpadeIcon: FC<SuitIconProps> = (props) => {
+export const SuitIcon: FC<SuitIconProps> = ({ suit, ...props }) => {
+  switch (suit) {
+    case "spade":
+      return <SpadeIcon {...props} />;
+    case "heart":
+      return <HeartIcon {...props} />;
+    case "diamond":
+      return <DiamondIcon {...props} />;
+    case "club":
+      return <ClubIcon {...props} />;
+    default:
+      return <WildIcon {...props} />;
+  }
+};
+
+export type SuitIconBaseProps = SVGAttributes<SVGElement>;
+
+export const SpadeIcon: FC<SuitIconBaseProps> = (props) => {
   return (
     <svg
       fill="none"
@@ -18,7 +37,7 @@ export const SpadeIcon: FC<SuitIconProps> = (props) => {
   );
 };
 
-export const HeartIcon: FC<SuitIconProps> = (props) => {
+export const HeartIcon: FC<SuitIconBaseProps> = (props) => {
   return (
     <svg
       fill="none"
@@ -34,7 +53,7 @@ export const HeartIcon: FC<SuitIconProps> = (props) => {
   );
 };
 
-export const DiamondIcon: FC<SuitIconProps> = (props) => {
+export const DiamondIcon: FC<SuitIconBaseProps> = (props) => {
   return (
     <svg
       fill="none"
@@ -50,7 +69,7 @@ export const DiamondIcon: FC<SuitIconProps> = (props) => {
   );
 };
 
-export const ClubIcon: FC<SuitIconProps> = (props) => {
+export const ClubIcon: FC<SuitIconBaseProps> = (props) => {
   return (
     <svg
       fill="none"
@@ -60,6 +79,22 @@ export const ClubIcon: FC<SuitIconProps> = (props) => {
     >
       <path
         d="M18.659 9.879a4.606 4.606 0 0 0-4.377 2.512 1.47 1.47 0 0 1-.841.741l-.014.005a.447.447 0 0 1-.579-.492c.108-.718.278-1.416.504-2.09a1.46 1.46 0 0 1 .733-.832 4.605 4.605 0 0 0 2.52-4.382c-.134-2.335-2.077-4.243-4.414-4.337a4.613 4.613 0 0 0-4.804 4.609 4.606 4.606 0 0 0 2.534 4.112c.34.173.605.464.726.826.226.674.397 1.374.505 2.094a.447.447 0 0 1-.579.492l-.014-.005a1.47 1.47 0 0 1-.84-.74 4.605 4.605 0 0 0-4.378-2.513c-2.335.134-4.243 2.077-4.337 4.414a4.613 4.613 0 0 0 4.609 4.804 4.606 4.606 0 0 0 4.105-2.52c.178-.347.473-.62.844-.742l.013-.005a.447.447 0 0 1 .578.492 12.36 12.36 0 0 1-2.537 5.857.51.51 0 0 0 .404.82h5.96a.51.51 0 0 0 .404-.82 12.36 12.36 0 0 1-2.537-5.857.447.447 0 0 1 .578-.491 1.477 1.477 0 0 1 .857.747 4.605 4.605 0 0 0 4.105 2.519 4.613 4.613 0 0 0 4.61-4.804c-.095-2.337-2.003-4.28-4.338-4.414Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+};
+
+export const WildIcon: FC<SuitIconBaseProps> = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        d="m16.744 22.366 3.317-2.435-4.702-6.507L23 10.947 21.698 7l-7.64 2.477V1.5H9.942v8.02L2.302 7.041 1 10.989l7.641 2.477L3.94 19.93l3.359 2.435L12 15.86l4.744 6.507Z"
         fill="currentColor"
       />
     </svg>

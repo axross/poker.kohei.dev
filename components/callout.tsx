@@ -7,7 +7,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { FC, HTMLAttributes, ReactNode } from "react";
-import { twJoin } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 
 interface CalloutProps extends HTMLAttributes<HTMLDivElement> {
   intent: "note" | "warning" | "info" | "tip" | "check";
@@ -23,7 +23,7 @@ export const Callout: FC<CalloutProps> = ({
 
   return (
     <div
-      className={twJoin(
+      className={twMerge(
         "flex mt-6 px-5 py-4 gap-x-3 overflow-hidden rounded-xl border",
         intent === "note" &&
           "border-sky-500/20 bg-sky-50/50 dark:border-sky-500/30 dark:bg-sky-500/10",
@@ -42,7 +42,7 @@ export const Callout: FC<CalloutProps> = ({
     >
       <Icon
         size={20}
-        className={twJoin(
+        className={twMerge(
           "mt-1",
           intent === "note" && "text-sky-500",
           intent === "warning" && "text-amber-500 dark:text-amber-300/80",
@@ -53,7 +53,7 @@ export const Callout: FC<CalloutProps> = ({
       />
 
       <div
-        className={twJoin(
+        className={twMerge(
           "w-full min-w-0 prose leading-relaxed overflow-x-auto",
           intent === "note" && "text-sky-900 dark:text-sky-200",
           intent === "warning" && "text-amber-900 dark:text-amber-200",
