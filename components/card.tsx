@@ -43,7 +43,7 @@ export const Card: FC<CardProps> = ({
       <SuitIcon
         suit={resolvedSuit}
         className={twMerge(
-          "w-3.5 h-3.5 text-slate-600 dark:text-slate-500",
+          "w-3.5 h-3.5 text-slate-400 dark:text-slate-700",
           resolvedSuit === "spade" && "text-slate-900 dark:text-slate-200",
           resolvedSuit === "heart" && "text-rose-600 dark:text-rose-500",
           resolvedSuit === "diamond" && "text-blue-600 dark:text-blue-500",

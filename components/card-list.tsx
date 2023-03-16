@@ -58,7 +58,7 @@ export const CardList: FC<CardListProps> = ({
             <SuitIcon
               suit={suit}
               className={twMerge(
-                "w-3.5 h-3.5 text-slate-600 dark:text-slate-500",
+                "w-3.5 h-3.5 text-slate-400 dark:text-slate-700",
                 suit === "spade" && "text-slate-900 dark:text-slate-200",
                 suit === "heart" && "text-rose-600 dark:text-rose-500",
                 suit === "diamond" && "text-blue-600 dark:text-blue-500",
