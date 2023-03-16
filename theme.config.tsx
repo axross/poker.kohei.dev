@@ -1,9 +1,9 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
 import React from "react";
-import { PlayingCard } from "./components/playing-card";
-import { RankPair } from "./components/rank-pair";
 import { Callout } from "./components/callout";
 import { Logo } from "./components/logo";
+import { Card } from "./components/card";
+import { CardList } from "./components/card-list";
 
 const config: DocsThemeConfig = {
   primaryHue: 200,
@@ -40,8 +40,8 @@ const config: DocsThemeConfig = {
   },
   components: {
     Callout,
-    PlayingCard,
-    RankPair,
+    Card,
+    CardList,
   },
 };
 
