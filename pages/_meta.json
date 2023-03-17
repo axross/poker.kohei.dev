@@ -2,10 +2,19 @@
   "index": "このウェブサイトについて",
   "what-is-poker-actually": "ポーカーとはどんなゲームか",
   "game-theory-101": "ゲーム理論とナッシュ均衡",
+  "-": {
+    "type": "separator"
+  },
   "quantifying-hands": "ハンドの能力を定量化する",
-  "categorizing-hand-ranges": "ハンドレンジの分類",
+  "categorizing-hand-ranges": "ハンドレンジを分類する",
   "range-advantage-and-its-transition": "レンジアドバンテージとストリートでの変化",
+  "--": {
+    "type": "separator"
+  },
   "analyzing-exploit": "エクスプロイト戦略を探す",
+  "---": {
+    "type": "separator"
+  },
   "data-tables": "データ集",
   "glossary": "用語集"
 }
