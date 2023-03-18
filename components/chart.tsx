@@ -1,14 +1,12 @@
 import { FC, HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import {
-  VictoryArea,
-  VictoryAreaProps,
-  VictoryAxis,
-  VictoryAxisProps,
   VictoryChart,
+  VictoryChartProps,
   VictoryTheme,
   VictoryThemeDefinition,
 } from "victory";
+export { VictoryArea as ChartArea, VictoryAxis as ChartAxis } from "victory";
 
 export const theme: VictoryThemeDefinition = {
   ...VictoryTheme.grayscale,
@@ -60,70 +58,26 @@ export const theme: VictoryThemeDefinition = {
   },
 };
 
-export interface ChartProps extends HTMLAttributes<HTMLDivElement> {
-  dependentAxisMinDomain?: VictoryAxisProps["minDomain"];
-  dependentAxisMaxDomain?: VictoryAxisProps["maxDomain"];
-  dependentAxisTickValues?: VictoryAxisProps["tickValues"];
-  dependentAxisTickFormat?: VictoryAxisProps["tickFormat"];
-  dependentAxisLabel?: VictoryAxisProps["label"];
-  crossAxisMinDomain?: VictoryAxisProps["minDomain"];
-  crossAxisMaxDomain?: VictoryAxisProps["maxDomain"];
-  crossAxisTickValues?: VictoryAxisProps["tickValues"];
-  crossAxisTickFormat?: VictoryAxisProps["tickFormat"];
-  crossAxisLabel?: VictoryAxisProps["label"];
-}
+export type ChartContainerProps = HTMLAttributes<HTMLDivElement>;
 
-export const Chart: FC<ChartProps> = ({
-  dependentAxisMinDomain = 0,
-  dependentAxisMaxDomain = 1,
-  dependentAxisTickValues = [dependentAxisMinDomain, dependentAxisMaxDomain],
-  dependentAxisTickFormat,
-  dependentAxisLabel,
-  crossAxisMinDomain = 0,
-  crossAxisMaxDomain = 1,
-  crossAxisTickValues = [crossAxisMinDomain, crossAxisMaxDomain],
-  crossAxisTickFormat,
-  crossAxisLabel,
+export const ChartContainer: FC<ChartContainerProps> = ({
   className,
-  children,
   ...props
 }) => {
   return (
     <div
       className={twMerge("w-full max-w-md mt-4 mx-auto", className)}
       {...props}
-    >
-      <VictoryChart theme={theme}>
-        {children}
-
-        <VictoryAxis
-          dependentAxis
-          minDomain={dependentAxisMinDomain}
-          maxDomain={dependentAxisMaxDomain}
-          tickValues={dependentAxisTickValues}
-          tickFormat={dependentAxisTickFormat}
-          label={dependentAxisLabel}
-        />
-
-        <VictoryAxis
-          crossAxis
-          minDomain={crossAxisMinDomain}
-          maxDomain={crossAxisMaxDomain}
-          tickValues={crossAxisTickValues}
-          tickFormat={crossAxisTickFormat}
-          label={crossAxisLabel}
-        />
-      </VictoryChart>
-    </div>
+    />
   );
 };
 
-export interface ChartAreaProps extends VictoryAreaProps {
-  data: { x: number; y: number }[];
-}
+export type ChartProps = VictoryChartProps;
 
-export const ChartArea: FC<ChartAreaProps> = (props) => {
+export const Chart: FC<ChartProps> = ({ children, ...props }) => {
   return (
-    <VictoryArea data={[]} x="x" y="y" interpolation="natural" {...props} />
+    <VictoryChart theme={theme} {...props}>
+      {children}
+    </VictoryChart>
   );
 };
