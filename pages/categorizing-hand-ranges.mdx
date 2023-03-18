@@ -17,19 +17,34 @@
 
 ハンドレンジが EQ 最上位から中上位のハンドで構成されているとき、それを **リニアレンジ (線形レンジ)** と呼びます。例えば、プリフロップでの参加率が 15%のときに EQ 上位 15%のハンドのみで参加するとリニアレンジになります。
 
-<Chart
-  dependentAxisTickFormat={(y) => (y === 0 ? "0%" : "100%")}
-  dependentAxisLabel="参加割合"
-  crossAxisTickFormat={(y) => (y === 0 ? "最低EQ" : "最高EQ")}
-  crossAxisLabel="レンジ構成ハンドのEQ"
->
-  <ChartArea
-    data={[
-      { x: 0.7, y: 0.9 },
-      { x: 1, y: 1 },
-    ]}
-  />
-</Chart>
+<ChartContainer>
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 1]}
+      tickFormat={(y) => (y === 0 ? "0%" : "100%")}
+      label="参加割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 1]}
+      tickFormat={(y) => (y === 0 ? "最低EQ" : "最高EQ")}
+      label="レンジ構成ハンドのEQ"
+    />
+
+    <ChartArea
+      data={[
+        { x: 0.7, y: 0.9 },
+        { x: 1, y: 1 },
+      ]}
+    />
+  </Chart>
+</ChartContainer>
 
 リニアレンジは直感的で扱いやすいハンドレンジではあるものの、ボードマッチがわかりやすいため相手からハンドレンジが絞り込まれやすいです。ぶつかっている相手は状況判断が比較的楽なのでリニアレンジでは利益を出しにくいと言えます。
 
@@ -37,23 +52,39 @@
 
 ナッツレンジとブラフレンジを中心に構成されたハンドレンジのことを **ポラライズドレンジ (両極化レンジ)** と呼びます。リニアレンジからナッツ級のハンドなど自信を持ってバリューベットできるハンドを残し、適量のブラフハンドを加えるとこの形になります。
 
-<Chart
-  dependentAxisTickFormat={(y) => (y === 0 ? "0%" : "100%")}
-  dependentAxisLabel="参加割合"
-  crossAxisTickFormat={(y) => (y === 0 ? "最低EQ" : "最高EQ")}
-  crossAxisLabel="レンジ構成ハンドのEQ"
->
-  <ChartArea
-    data={[
-      { x: 0.15, y: 0 },
-      { x: 0.2, y: 0.45 },
-      { x: 0.4, y: 0 },
-      { x: 0.7, y: 0 },
-      { x: 0.9, y: 0.9 },
-      { x: 1, y: 1 },
-    ]}
-  />
-</Chart>
+<ChartContainer>
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 1]}
+      tickFormat={(y) => (y === 0 ? "0%" : "100%")}
+      label="参加割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 1]}
+      tickFormat={(y) => (y === 0 ? "最低EQ" : "最高EQ")}
+      label="レンジ構成ハンドのEQ"
+    />
+
+    <ChartArea
+      data={[
+        { x: 0.15, y: 0 },
+        { x: 0.2, y: 0.45 },
+        { x: 0.4, y: 0 },
+        { x: 0.7, y: 0 },
+        { x: 0.9, y: 0.9 },
+        { x: 1, y: 1 },
+      ]}
+      interpolation="natural"
+    />
+  </Chart>
+</ChartContainer>
 
 ポラライズドレンジでのベットはリニアレンジでのベットに比べて EV が高い傾向にあります。バリューベットへのコールの誘因をブラフレンジが支え、ブラフベットへのフォールドの誘因をバリューレンジが支えるのが理由で、均衡戦略となるブラフ頻度でミックスしたベットアクションをとると相手のコール/チェックが無差別になるほか、その際でもベット額が高ければ高いほど EV も増加します。
 
@@ -63,28 +94,44 @@
 
 中程度の EQ があるためにショーダウンバリューがあるものの、自信を持ってバリューベットできるほどではないハンドで多く構成されているハンドレンジをコンデンスドレンジと呼びます。
 
-<Chart
-  dependentAxisTickFormat={(y) => (y === 0 ? "0%" : "100%")}
-  dependentAxisLabel="参加割合"
-  crossAxisTickFormat={(y) => (y === 0 ? "最低EQ" : "最高EQ")}
-  crossAxisLabel="レンジ構成ハンドのEQ"
->
-  <ChartArea
-    data={[
-      { x: 0.45, y: 0 },
-      { x: 0.5, y: 0.1 },
-      { x: 0.55, y: 0.3 },
-      { x: 0.6, y: 0.5 },
-      { x: 0.65, y: 0.7 },
-      { x: 0.7, y: 0.9 },
-      { x: 0.75, y: 1 },
-      { x: 0.8, y: 0.9 },
-      { x: 0.85, y: 0.7 },
-      { x: 0.9, y: 0.4 },
-      { x: 0.95, y: 0 },
-    ]}
-  />
-</Chart>
+<ChartContainer>
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 1]}
+      tickFormat={(y) => (y === 0 ? "0%" : "100%")}
+      label="参加割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 1]}
+      tickFormat={(y) => (y === 0 ? "最低EQ" : "最高EQ")}
+      label="レンジ構成ハンドのEQ"
+    />
+
+    <ChartArea
+      data={[
+        { x: 0.45, y: 0 },
+        { x: 0.5, y: 0.1 },
+        { x: 0.55, y: 0.3 },
+        { x: 0.6, y: 0.5 },
+        { x: 0.65, y: 0.7 },
+        { x: 0.7, y: 0.9 },
+        { x: 0.75, y: 1 },
+        { x: 0.8, y: 0.9 },
+        { x: 0.85, y: 0.7 },
+        { x: 0.9, y: 0.4 },
+        { x: 0.95, y: 0 },
+      ]}
+      interpolation="natural"
+    />
+  </Chart>
+</ChartContainer>
 
 コンデンスドレンジは相手の消極的なアクションによってハンドレンジがこちらの相対的に強くなったり、アウツのランアウトによって状況が変化するまでは積極的なベットアクションを取れません。コンデンスドレンジの強みはショーダウンバリューがあることなので、ブラフキャッチによって利益を出していきます。
 
