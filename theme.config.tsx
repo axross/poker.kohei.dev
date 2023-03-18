@@ -10,6 +10,7 @@ import {
 import { Logo } from "./components/logo";
 import { Card } from "./components/card";
 import { CardList } from "./components/card-list";
+import { useNextSeoProps } from "./hooks/use-next-seo-props";
 
 const config: DocsThemeConfig = {
   primaryHue: 200,
@@ -18,6 +19,7 @@ const config: DocsThemeConfig = {
     link: "https://github.com/axross/poker.kohei.dev",
   },
   docsRepositoryBase: "https://github.com/axross/poker.kohei.dev/tree/main",
+  useNextSeoProps,
   head: (
     <>
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
