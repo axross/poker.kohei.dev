@@ -1,7 +1,12 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
 import React from "react";
 import { Callout } from "./components/callout";
-import { Chart, ChartArea } from "./components/chart";
+import {
+  Chart,
+  ChartArea,
+  ChartAxis,
+  ChartContainer,
+} from "./components/chart";
 import { Logo } from "./components/logo";
 import { Card } from "./components/card";
 import { CardList } from "./components/card-list";
@@ -41,7 +46,9 @@ const config: DocsThemeConfig = {
   },
   components: {
     Chart,
-    ChartArea,
+    ChartArea: ChartArea as never,
+    ChartAxis: ChartAxis as never,
+    ChartContainer,
     Callout,
     Card,
     CardList,
