@@ -44,6 +44,7 @@ export const CardList: FC<CardListProps> = ({
               suit === "diamond" && "bg-blue-500/10 border-blue-500/10",
               suit === "club" && "bg-emerald-500/10 border-emerald-500/10"
             )}
+            key={i}
           >
             <RankIcon
               rank={rank}
