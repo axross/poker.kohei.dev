@@ -18,6 +18,7 @@ export const theme: VictoryThemeDefinition = {
       data: {
         ...VictoryTheme.grayscale.area.style.data,
         fill: "currentColor",
+        opacity: 0.75,
       },
       labels: {
         ...(Array.isArray(VictoryTheme.grayscale.area.style.labels)
