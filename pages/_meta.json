@@ -5,16 +5,11 @@
   "-": {
     "type": "separator"
   },
-  "quantifying-hands": "ハンドの能力を定量化する",
-  "categorizing-hand-ranges": "ハンドレンジを分類する",
-  "range-advantage-and-its-transition": "レンジアドバンテージとストリートでの変化",
+  "gto-basic": "GTO基礎",
+  "exploitative-strategy": "エクスプロイト戦略",
+  "data-tables": "データ集",
   "--": {
     "type": "separator"
   },
-  "analyzing-exploit": "エクスプロイト戦略を探す",
-  "---": {
-    "type": "separator"
-  },
-  "data-tables": "データ集",
   "glossary": "用語集"
 }
