@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
-import { RankIcon, RankIconProps } from "./rank-icon";
-import { SuitIcon, SuitIconProps } from "./suit-icon";
+import { RankIcon, RankIconProps } from "~/components/rank-icon";
+import { SuitIcon, SuitIconProps } from "~/components/suit-icon";
 
 export interface CardProps extends HTMLAttributes<HTMLSpanElement> {
   rank?: RankIconProps["rank"];

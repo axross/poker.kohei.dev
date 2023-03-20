@@ -1,8 +1,8 @@
 import { FC, HTMLAttributes, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
-import { parseRank, parseSuit } from "./card";
-import { RankIcon, RankIconProps } from "./rank-icon";
-import { SuitIcon, SuitIconProps } from "./suit-icon";
+import { parseRank, parseSuit } from "~/components/card";
+import { RankIcon, RankIconProps } from "~/components/rank-icon";
+import { SuitIcon, SuitIconProps } from "~/components/suit-icon";
 
 export interface CardListProps extends HTMLAttributes<HTMLSpanElement> {
   cards?: { rank: RankIconProps["rank"]; suit: SuitIconProps["suit"] }[];

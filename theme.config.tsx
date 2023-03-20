@@ -1,16 +1,7 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
 import React from "react";
-import { Callout } from "./components/callout";
-import {
-  Chart,
-  ChartArea,
-  ChartAxis,
-  ChartContainer,
-} from "./components/chart";
-import { Logo } from "./components/logo";
-import { Card } from "./components/card";
-import { CardList } from "./components/card-list";
-import { useNextSeoProps } from "./hooks/use-next-seo-props";
+import { Logo } from "~/components/logo";
+import { useNextSeoProps } from "~/hooks/use-next-seo-props";
 
 const config: DocsThemeConfig = {
   primaryHue: 200,
@@ -45,15 +36,6 @@ const config: DocsThemeConfig = {
   ),
   footer: {
     text: "©️ Kohei Asai",
-  },
-  components: {
-    Chart,
-    ChartArea: ChartArea as never,
-    ChartAxis: ChartAxis as never,
-    ChartContainer,
-    Callout,
-    Card,
-    CardList,
   },
 };
 
