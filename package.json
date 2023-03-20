@@ -10,10 +10,12 @@
     "url": "https://github.com/axross/poker.kohei.dev/issues"
   },
   "scripts": {
-    "lint": "textlint pages/**/*.mdx pages/*.mdx",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "concurrently -n NEXT,STRY -c bgBlue,bgMagenta npm:dev-next npm:dev-sb",
+    "dev-next": "next dev",
+    "dev-sb": "storybook dev -p 6006",
+    "build": "npm run build-next && npm run build-sb",
+    "build-next": "next build",
+    "build-sb": "storybook build"
   },
   "dependencies": {
     "@next/font": "^13.2.4",
@@ -29,10 +31,19 @@
   },
   "devDependencies": {
     "@napi-rs/simple-git": "^0.1.8",
+    "@storybook/addon-essentials": "^7.0.0-rc.4",
+    "@storybook/addon-interactions": "^7.0.0-rc.4",
+    "@storybook/addon-links": "^7.0.0-rc.4",
+    "@storybook/blocks": "^7.0.0-rc.4",
+    "@storybook/nextjs": "^7.0.0-rc.4",
+    "@storybook/react": "^7.0.0-rc.4",
+    "@storybook/testing-library": "^0.0.14-next.1",
     "@types/node": "18.11.10",
     "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
+    "storybook": "^7.0.0-rc.4",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.3"
   }

@@ -9,6 +9,9 @@ export interface CardProps extends HTMLAttributes<HTMLSpanElement> {
   children?: string;
 }
 
+/**
+ * A presentation component that expresses a single card in a friendly way. Suitable as a leaf node in markdown documents.
+ */
 export const Card: FC<CardProps> = ({
   rank,
   suit,
@@ -22,7 +25,7 @@ export const Card: FC<CardProps> = ({
   return (
     <span
       className={twMerge(
-        "inline-flex items-center h-5 mx-0.5 px-1 bg-slate-500/10 border border-slate-500/10 rounded align-baseline select-none",
+        "inline-flex items-center h-[1.25em] px-[.25em] bg-slate-500/10 border border-slate-500/10 rounded align-baseline select-none",
         resolvedSuit === "heart" && "bg-rose-500/10 border-rose-500/10",
         resolvedSuit === "diamond" && "bg-blue-500/10 border-blue-500/10",
         resolvedSuit === "club" && "bg-emerald-500/10 border-emerald-500/10",
@@ -33,7 +36,7 @@ export const Card: FC<CardProps> = ({
       <RankIcon
         rank={resolvedRank}
         className={twMerge(
-          "font-card-symbol text-slate-900 dark:text-slate-200 text-[18px] font-semibold leading-[14px]",
+          "font-card-symbol text-slate-900 dark:text-slate-200 text-[1.125em] font-semibold leading-[.875em]",
           resolvedSuit === "heart" && "text-rose-600 dark:text-rose-500",
           resolvedSuit === "diamond" && "text-blue-600 dark:text-blue-500",
           resolvedSuit === "club" && "text-emerald-600 dark:text-emerald-500"
@@ -43,7 +46,7 @@ export const Card: FC<CardProps> = ({
       <SuitIcon
         suit={resolvedSuit}
         className={twMerge(
-          "w-3.5 h-3.5 text-slate-400 dark:text-slate-700",
+          "w-[.875em] h-[.875em] text-slate-400 dark:text-slate-700",
           resolvedSuit === "spade" && "text-slate-900 dark:text-slate-200",
           resolvedSuit === "heart" && "text-rose-600 dark:text-rose-500",
           resolvedSuit === "diamond" && "text-blue-600 dark:text-blue-500",

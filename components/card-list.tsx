@@ -9,6 +9,9 @@ export interface CardListProps extends HTMLAttributes<HTMLSpanElement> {
   children?: string;
 }
 
+/**
+ * A presentation component that expresses multiple cards as a group. Suitable as a leaf node in markdown documents.
+ */
 export const CardList: FC<CardListProps> = ({
   cards,
   className,
@@ -37,7 +40,7 @@ export const CardList: FC<CardListProps> = ({
         return (
           <span
             className={twMerge(
-              "inline-flex items-center h-5 px-0.5 bg-slate-500/10 border-t border-b border-slate-500/10 align-baseline select-none",
+              "inline-flex items-center h-[1.25em] px-[.25em] bg-slate-500/10 border-t border-b border-slate-500/10 align-baseline select-none",
               i === 0 && "pl-1 border-l rounded-l",
               i === resolvedCards.length - 1 && "pr-1 border-r rounded-r",
               suit === "heart" && "bg-rose-500/10 border-rose-500/10",
@@ -49,7 +52,7 @@ export const CardList: FC<CardListProps> = ({
             <RankIcon
               rank={rank}
               className={twMerge(
-                "font-card-symbol text-slate-900 dark:text-slate-200 text-[18px] font-semibold leading-[14px]",
+                "font-card-symbol text-slate-900 dark:text-slate-200 text-[1.125em] font-semibold leading-[.875em]",
                 suit === "heart" && "text-rose-600 dark:text-rose-500",
                 suit === "diamond" && "text-blue-600 dark:text-blue-500",
                 suit === "club" && "text-emerald-600 dark:text-emerald-500"
@@ -59,7 +62,7 @@ export const CardList: FC<CardListProps> = ({
             <SuitIcon
               suit={suit}
               className={twMerge(
-                "w-3.5 h-3.5 text-slate-400 dark:text-slate-700",
+                "w-[.875em] h-[.875em] text-slate-400 dark:text-slate-700",
                 suit === "spade" && "text-slate-900 dark:text-slate-200",
                 suit === "heart" && "text-rose-600 dark:text-rose-500",
                 suit === "diamond" && "text-blue-600 dark:text-blue-500",
