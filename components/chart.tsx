@@ -6,7 +6,11 @@ import {
   VictoryTheme,
   VictoryThemeDefinition,
 } from "victory";
-export { VictoryArea as ChartArea, VictoryAxis as ChartAxis } from "victory";
+export {
+  VictoryArea as ChartArea,
+  VictoryAxis as ChartAxis,
+  VictoryLine as ChartLine,
+} from "victory";
 
 export const theme: VictoryThemeDefinition = {
   ...VictoryTheme.grayscale,
@@ -52,6 +56,25 @@ export const theme: VictoryThemeDefinition = {
         ...(Array.isArray(VictoryTheme.grayscale.axis.style.tickLabels)
           ? VictoryTheme.grayscale.axis.style.tickLabels[0] ?? {}
           : VictoryTheme.grayscale.axis.style.tickLabels),
+        fontSize: 14,
+        fill: "currentColor",
+      },
+    },
+  },
+  line: {
+    ...VictoryTheme.grayscale.line,
+    animate: true,
+    style: {
+      ...VictoryTheme.grayscale.line.style,
+      data: {
+        ...VictoryTheme.grayscale.line.style.data,
+        stroke: "currentColor",
+        strokeWidth: "0.1875em",
+      },
+      labels: {
+        ...(Array.isArray(VictoryTheme.grayscale.line.style.labels)
+          ? VictoryTheme.grayscale.line.style.labels[0] ?? {}
+          : VictoryTheme.grayscale.line.style.labels),
         fontSize: 14,
         fill: "currentColor",
       },
