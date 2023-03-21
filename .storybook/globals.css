@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@600;700&display=swap');
+
 #storybook-root {
   @apply text-slate-700 dark:text-slate-200;
   @apply antialiased text-base;
