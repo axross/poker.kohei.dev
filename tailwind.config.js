@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./components/**/*.{ts,tsx}", "./pages/**/*.mdx"],
+  darkMode: "class",
+  content: [
+    "./components/**/*.{ts,tsx}",
+    "./pages/**/*.mdx",
+    "./.storybook/globals.css",
+  ],
   theme: {
     extend: {
       fontFamily: {

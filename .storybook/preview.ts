@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/react";
 import { useLayoutEffect } from "react";
 import "~/globals.css";
+import "./globals.css";
 
 const preview: Preview = {
   parameters: {
@@ -37,7 +38,7 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       useLayoutEffect(() => {
-        if (context.globals.backgrounds.value === "#111111") {
+        if (context.globals.backgrounds?.value === "#111111") {
           globalThis.document.body.classList.add("dark");
         } else {
           globalThis.document.body.classList.remove("dark");
