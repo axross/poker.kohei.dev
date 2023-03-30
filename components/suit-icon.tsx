@@ -1,18 +1,19 @@
+import { Suit } from "holdem";
 import { FC, SVGAttributes } from "react";
 
 export interface SuitIconProps extends SuitIconBaseProps {
-  suit?: "spade" | "heart" | "diamond" | "club";
+  suit?: Suit;
 }
 
 export const SuitIcon: FC<SuitIconProps> = ({ suit, ...props }) => {
   switch (suit) {
-    case "spade":
+    case "s":
       return <SpadeIcon {...props} />;
-    case "heart":
+    case "h":
       return <HeartIcon {...props} />;
-    case "diamond":
+    case "d":
       return <DiamondIcon {...props} />;
-    case "club":
+    case "c":
       return <ClubIcon {...props} />;
     default:
       return <WildIcon {...props} />;

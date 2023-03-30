@@ -1,4 +1,5 @@
 import { Azeret_Mono } from "@next/font/google";
+import { Rank } from "holdem";
 import { FC, HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -8,25 +9,12 @@ const azeretMonoFont = Azeret_Mono({
 });
 
 export interface RankIconProps extends HTMLAttributes<HTMLSpanElement> {
-  rank?:
-    | "ace"
-    | "king"
-    | "queen"
-    | "jack"
-    | "ten"
-    | "nine"
-    | "eight"
-    | "seven"
-    | "six"
-    | "five"
-    | "four"
-    | "trey"
-    | "deuce";
+  rank?: Rank;
 }
 
 export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
   switch (rank) {
-    case "ace":
+    case "A":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -35,7 +23,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           A
         </span>
       );
-    case "king":
+    case "K":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -44,7 +32,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           K
         </span>
       );
-    case "queen":
+    case "Q":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -53,7 +41,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           Q
         </span>
       );
-    case "jack":
+    case "J":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -62,7 +50,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           J
         </span>
       );
-    case "ten":
+    case "T":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -71,7 +59,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           T
         </span>
       );
-    case "nine":
+    case "9":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -80,7 +68,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           9
         </span>
       );
-    case "eight":
+    case "8":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -89,7 +77,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           8
         </span>
       );
-    case "seven":
+    case "7":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -98,7 +86,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           7
         </span>
       );
-    case "six":
+    case "6":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -107,7 +95,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           6
         </span>
       );
-    case "five":
+    case "5":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -116,7 +104,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           5
         </span>
       );
-    case "four":
+    case "4":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -125,7 +113,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           4
         </span>
       );
-    case "trey":
+    case "3":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}
@@ -134,7 +122,7 @@ export const RankIcon: FC<RankIconProps> = ({ rank, className, ...props }) => {
           3
         </span>
       );
-    case "deuce":
+    case "2":
       return (
         <span
           className={twMerge(azeretMonoFont.variable, className)}

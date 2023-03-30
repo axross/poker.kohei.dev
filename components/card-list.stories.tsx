@@ -19,10 +19,10 @@ type Story = StoryObj<typeof CardList>;
 export const CommunityCards: Story = {
   args: {
     cards: [
-      { rank: "ace", suit: "spade" },
-      { rank: "king", suit: "club" },
-      { rank: "queen", suit: "heart" },
-      { rank: "jack", suit: "diamond" },
+      { rank: "A", suit: "s" },
+      { rank: "K", suit: "c" },
+      { rank: "Q", suit: "h" },
+      { rank: "J", suit: "d" },
     ],
   },
 };
@@ -42,9 +42,9 @@ export const CardPairFromChildren: Story = {
 export const InHeading: Story = {
   args: {
     cards: [
-      { rank: "ace", suit: "spade" },
-      { rank: "king", suit: "club" },
-      { rank: "queen", suit: "heart" },
+      { rank: "A", suit: "s" },
+      { rank: "K", suit: "c" },
+      { rank: "Q", suit: "h" },
     ],
   },
   render: (props) => (
