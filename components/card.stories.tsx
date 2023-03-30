@@ -18,8 +18,8 @@ type Story = StoryObj<typeof Card>;
  */
 export const HeartOfQueen: Story = {
   args: {
-    rank: "queen",
-    suit: "heart",
+    rank: "Q",
+    suit: "h",
   },
 };
 
@@ -37,8 +37,8 @@ export const KingOfClubFromChildren: Story = {
  */
 export const InHeading: Story = {
   args: {
-    rank: "jack",
-    suit: "diamond",
+    rank: "J",
+    suit: "d",
   },
   render: (props) => (
     <div className="text-2xl">
