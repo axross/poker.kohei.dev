@@ -1,6 +1,6 @@
 import { FC, HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import { GridPattern } from "~/components/GridPattern";
+import { GridPattern } from "~/components/grid-pattern";
 
 export type HeroPatternProps = HTMLAttributes<HTMLDivElement>;
 

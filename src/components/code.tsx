@@ -13,8 +13,8 @@ import {
 } from "react";
 import { twMerge } from "tailwind-merge";
 import { create } from "zustand";
-import { Tag } from "~/components/Tag";
-import { ClipboardIcon } from "~/components/icons/ClipboardIcon";
+import { Tag } from "~/components/tag";
+import { ClipboardIcon } from "~/components/icons/clipboard-icon";
 
 const languageNames = {
   js: "JavaScript",

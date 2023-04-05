@@ -3,15 +3,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ComponentProps, FC, HTMLAttributes, useRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { Button } from "~/components/Button";
-import { useIsInsideMobileNavigation } from "~/components/MobileNavigation";
-import { useSectionStore } from "~/components/SectionProvider";
-import { Tag } from "~/components/Tag";
+import { Button } from "~/components/button";
+import { useIsInsideMobileNavigation } from "~/components/mobile-navigation";
+import { useSectionStore } from "~/components/section-provider";
+import { Tag } from "~/components/tag";
 import {
   navigationGroups,
   topLevelNavigationItems,
 } from "~/constants/navigation";
-import { remToPx } from "~/lib/remToPx";
+import { remToPx } from "~/lib/rem-to-px";
 import { NavigationGroup } from "~/models/navigation";
 
 function useInitialValue<V>(value: V, condition: boolean = true): V {

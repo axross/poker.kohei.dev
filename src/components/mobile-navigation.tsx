@@ -2,10 +2,10 @@ import { Dialog, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { createContext, FC, Fragment, useContext } from "react";
 import { create } from "zustand";
-import { Header } from "~/components/Header";
-import { Navigation } from "~/components/Navigation";
-import { MenuIcon } from "~/components/icons/MenuIcon";
-import { XIcon } from "~/components/icons/XIcon";
+import { Header } from "~/components/header";
+import { Navigation } from "~/components/navigation";
+import { MenuIcon } from "~/components/icons/menu-icon";
+import { XIcon } from "~/components/icons/x-icon";
 
 interface MobileNavigationStoreState {
   isOpen: boolean;

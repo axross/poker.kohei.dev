@@ -2,10 +2,10 @@ import { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { FC, HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import { Button } from "~/components/Button";
-import { CodeGroup, Code, Pre } from "~/components/Code";
-import { Heading, HeadingProps } from "~/components/Heading";
-import { InfoIcon } from "~/components/icons/InfoIcon";
+import { Button } from "~/components/button";
+import { CodeGroup, Code, Pre } from "~/components/code";
+import { Heading, HeadingProps } from "~/components/heading";
+import { InfoIcon } from "~/components/icons/info-icon";
 
 const H2: FC<HeadingProps> = (props) => {
   return <Heading level={2} {...props} />;

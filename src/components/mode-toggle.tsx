@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { SunIcon } from "~/components/icons/SunIcon";
-import { MoonIcon } from "~/components/icons/MoonIcon";
+import { SunIcon } from "~/components/icons/sun-icon";
+import { MoonIcon } from "~/components/icons/moon-icon";
 
 export type ModeToggleProps = ButtonHTMLAttributes<HTMLButtonElement>;
 

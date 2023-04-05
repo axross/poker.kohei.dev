@@ -9,10 +9,10 @@ import {
   useRef,
 } from "react";
 import { twMerge } from "tailwind-merge";
-import { useSectionStore } from "~/components/SectionProvider";
-import { Tag } from "~/components/Tag";
-import { AnchorIcon } from "~/components/icons/AnchorIcon";
-import { remToPx } from "~/lib/remToPx";
+import { useSectionStore } from "~/components/section-provider";
+import { Tag } from "~/components/tag";
+import { AnchorIcon } from "~/components/icons/anchor-icon";
+import { remToPx } from "~/lib/rem-to-px";
 
 interface EyebrowProps extends HTMLAttributes<HTMLDivElement> {
   tag?: string;

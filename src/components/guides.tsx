@@ -1,6 +1,6 @@
 import { FC, HTMLAttributes } from "react";
-import { Button } from "~/components/Button";
-import { Heading } from "~/components/Heading";
+import { Button } from "~/components/button";
+import { Heading } from "~/components/heading";
 
 const guides = [
   {

@@ -14,12 +14,12 @@ import {
   useState,
 } from "react";
 import { twMerge } from "tailwind-merge";
-import { Button } from "~/components/Button";
-import { CheckIcon } from "~/components/icons/CheckIcon";
-import { TwitterIcon } from "~/components/icons/TwitterIcon";
-import { GitHubIcon } from "~/components/icons/GitHubIcon";
-import { DiscordIcon } from "~/components/icons/DiscordIcon";
-import { navigationGroups } from "~/constants/navigation";
+import { Button } from "~/components/button";
+import { CheckIcon } from "~/components/icons/check-icon";
+import { TwitterIcon } from "~/components/icons/twitterI-icon";
+import { GitHubIcon } from "~/components/icons/github-icon";
+import { DiscordIcon } from "~/components/icons/discord-icon";
+import { navigationGroups, socialLinks } from "~/constants/navigation";
 
 const FeedbackButton: FC<HTMLAttributes<HTMLButtonElement>> = ({
   className,
@@ -217,15 +217,11 @@ const SmallPrint: FC<SmallPrintProps> = ({ className, ...props }) => {
         &copy; Copyright {new Date().getFullYear()}. All rights reserved.
       </p>
       <div className="flex gap-4">
-        <SocialLink href="#" icon={TwitterIcon}>
-          Follow us on Twitter
-        </SocialLink>
-        <SocialLink href="#" icon={GitHubIcon}>
-          Follow us on GitHub
-        </SocialLink>
-        <SocialLink href="#" icon={DiscordIcon}>
-          Join our Discord server
-        </SocialLink>
+        {socialLinks.map(({ icon, href, label }) => (
+          <SocialLink href={href} icon={icon}>
+            {label}
+          </SocialLink>
+        ))}
       </div>
     </div>
   );

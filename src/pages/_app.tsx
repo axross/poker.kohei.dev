@@ -4,9 +4,9 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import { Router, useRouter } from "next/router";
 import { FC } from "react";
-import { Layout } from "~/components/Layout";
+import { Layout } from "~/components/layout";
 import { mdxComponents } from "~/components/mdx";
-import { useMobileNavigationStore } from "~/components/MobileNavigation";
+import { useMobileNavigationStore } from "~/components/mobile-navigation";
 import "~/styles/tailwind.css";
 import "katex/dist/katex.min.css";
 

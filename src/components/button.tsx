@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ComponentProps, HTMLAttributes, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { ArrowIcon } from "~/components/icons/ArrowIcon";
+import { ArrowIcon } from "~/components/icons/arrow-icon";
 
 export interface ButtonProps extends HTMLAttributes<HTMLElement> {
   variant?: "primary" | "secondary" | "filled" | "outline" | "text";

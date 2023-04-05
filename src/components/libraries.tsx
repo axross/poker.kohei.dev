@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FC, HTMLAttributes } from "react";
-import { Button } from "~/components/Button";
-import { Heading } from "~/components/Heading";
+import { Button } from "~/components/button";
+import { Heading } from "~/components/heading";
 import logoGo from "~/images/logos/go.svg";
 import logoNode from "~/images/logos/node.svg";
 import logoPhp from "~/images/logos/php.svg";

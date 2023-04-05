@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FC, HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import { Footer } from "~/components/Footer";
-import { Header } from "~/components/Header";
-import { Logo } from "~/components/Logo";
-import { Navigation } from "~/components/Navigation";
-import { Prose } from "~/components/Prose";
-import { Section, SectionProvider } from "~/components/SectionProvider";
+import { Footer } from "~/components/footer";
+import { Header } from "~/components/header";
+import { Logo } from "~/components/logo";
+import { Navigation } from "~/components/navigation";
+import { Prose } from "~/components/prose";
+import { Section, SectionProvider } from "~/components/section-provider";
 
 export interface LayoutProps extends HTMLAttributes<HTMLDivElement> {
   sections: Section[];

@@ -25,9 +25,9 @@ import {
   useState,
 } from "react";
 import { twMerge } from "tailwind-merge";
-import { LoadingIcon } from "~/components/icons/LoadingIcon";
-import { NoResultsIcon } from "~/components/icons/NoResultsIcon";
-import { SearchIcon } from "~/components/icons/SearchIcon";
+import { LoadingIcon } from "~/components/icons/loading-icon";
+import { NoResultsIcon } from "~/components/icons/no-results-icon";
+import { SearchIcon } from "~/components/icons/search-icon";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_DOCSEARCH_APP_ID!,

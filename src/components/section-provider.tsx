@@ -9,7 +9,7 @@ import {
   useState,
 } from "react";
 import { StoreApi, createStore, useStore } from "zustand";
-import { remToPx } from "~/lib/remToPx";
+import { remToPx } from "~/lib/rem-to-px";
 
 interface SectionStoreState {
   sections: Section[];

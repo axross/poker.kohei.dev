@@ -15,12 +15,12 @@ import {
   useCallback,
 } from "react";
 import { twMerge } from "tailwind-merge";
-import { GridPattern, GridPatternProps } from "~/components/GridPattern";
-import { Heading } from "~/components/Heading";
-import { ChatBubbleIcon } from "~/components/icons/ChatBubbleIcon";
-import { EnvelopeIcon } from "~/components/icons/EnvelopeIcon";
-import { UserIcon } from "~/components/icons/UserIcon";
-import { UsersIcon } from "~/components/icons/UsersIcon";
+import { GridPattern, GridPatternProps } from "~/components/grid-pattern";
+import { Heading } from "~/components/heading";
+import { ChatBubbleIcon } from "~/components/icons/chat-bubble-icon";
+import { EnvelopeIcon } from "~/components/icons/envelope-icon";
+import { UserIcon } from "~/components/icons/userI-icon";
+import { UsersIcon } from "~/components/icons/users-icon";
 
 interface Resource {
   href: string;
@@ -156,20 +156,28 @@ const ResourcePattern: FC<ResourcePatternProps> = ({
   );
 };
 
-interface ResourceCProps extends Omit<HTMLAttributes<HTMLElement>, "resource"> {
+interface ResourceItemProps
+  extends Omit<HTMLAttributes<HTMLElement>, "resource"> {
   resource: Resource;
 }
 
-const ResourceC: FC<ResourceCProps> = ({ resource, className, ...props }) => {
+const ResourceItem: FC<ResourceItemProps> = ({
+  resource,
+  className,
+  ...props
+}) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const onMouseMove = useCallback((e: MouseEvent) => {
-    const { left, top } = e.currentTarget.getBoundingClientRect();
+  const onMouseMove = useCallback(
+    (e: MouseEvent) => {
+      const { left, top } = e.currentTarget.getBoundingClientRect();
 
-    mouseX.set(e.clientX - left);
-    mouseY.set(e.clientY - top);
-  }, []);
+      mouseX.set(e.clientX - left);
+      mouseY.set(e.clientY - top);
+    },
+    [mouseX, mouseY]
+  );
 
   return (
     <div
@@ -214,7 +222,7 @@ export const Resources: FC<ResourcesProps> = ({ className, ...props }) => {
 
       <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-gray-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
         {resources.map((resource) => (
-          <ResourceC key={resource.href} resource={resource} />
+          <ResourceItem key={resource.href} resource={resource} />
         ))}
       </div>
     </div>

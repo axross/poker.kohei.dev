@@ -2,15 +2,16 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ComponentProps, FC, HTMLAttributes, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { Button } from "~/components/Button";
-import { Logo } from "~/components/Logo";
+import { Button } from "~/components/button";
+import { Logo } from "~/components/logo";
 import {
   MobileNavigation,
   useIsInsideMobileNavigation,
   useMobileNavigationStore,
-} from "~/components/MobileNavigation";
-import { ModeToggle } from "~/components/ModeToggle";
-import { MobileSearch, Search } from "~/components/Search";
+} from "~/components/mobile-navigation";
+import { ModeToggle } from "~/components/mode-toggle";
+import { MobileSearch, Search } from "~/components/search";
+import { topLevelNavigationItems } from "~/constants/navigation";
 
 interface TopLevelNavItemProps extends HTMLAttributes<HTMLLIElement> {
   href: ComponentProps<typeof Link>["href"];
@@ -84,9 +85,11 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(
         <div className="flex items-center gap-5">
           <nav className="hidden md:block">
             <ul role="list" className="flex items-center gap-8">
-              <TopLevelNavItem href="/">API</TopLevelNavItem>
-              <TopLevelNavItem href="#">Documentation</TopLevelNavItem>
-              <TopLevelNavItem href="#">Support</TopLevelNavItem>
+              {topLevelNavigationItems.map(({ title, href }) => (
+                <TopLevelNavItem href={href} key={`${title}-${href}`}>
+                  {title}
+                </TopLevelNavItem>
+              ))}
             </ul>
           </nav>
           <div className="hidden md:block md:h-5 md:w-px md:bg-gray-900/10 md:dark:bg-white/15" />
