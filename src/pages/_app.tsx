@@ -8,6 +8,7 @@ import { Layout } from "~/components/Layout";
 import { mdxComponents } from "~/components/mdx";
 import { useMobileNavigationStore } from "~/components/MobileNavigation";
 import "~/styles/tailwind.css";
+import "katex/dist/katex.min.css";
 
 function onRouteChange() {
   useMobileNavigationStore.getState().close();
