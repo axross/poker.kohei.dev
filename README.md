@@ -1,50 +1,16 @@
-# Protocol
+# poker.kohei.dev
 
-Protocol is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+This is a documentation website explains the strategy of Texas Hold'em poker with the mathmatical approarch and practical game theory. I have no plan to translate the contents for now but please make an issue if you want to have a look in your language.
 
-## Getting started
+[poker.kohei.dev](https://poker.kohei.dev) のコンテンツリポジトリです。
 
-To get started with this template, first install the npm dependencies:
+- 質問や指摘などあれば[Discussions](https://github.com/axross/poker.kohei.dev/discussions)へお願いします。
+- 誤字・脱字など修正はPull Request経由でお願いします。大歓迎です。
 
-```bash
-npm install
-cp .env.example .env.local
-```
-
-Next, run the development server:
-
-```bash
-npm run dev
-```
-
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
-
-## Customizing
-
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
-
-## Global search
-
-By default this template uses [Algolia DocSearch](https://docsearch.algolia.com) for the global search. DocSearch is free for open-source projects, and you can sign up for an account on their website. Once your DocSearch account is ready, update the following [environment variables](https://nextjs.org/docs/basic-features/environment-variables) in your project with the values provided by Algolia:
-
-```
-NEXT_PUBLIC_DOCSEARCH_APP_ID=
-NEXT_PUBLIC_DOCSEARCH_API_KEY=
-NEXT_PUBLIC_DOCSEARCH_INDEX_NAME=
-```
+poker.kohei.devはNext.jsとTailwind UIを利用しています。
 
 ## License
 
-This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
+参考にするのは自由ですが、このリポジトリの内容は一部を除き **No License** です。個人利用・商用問わず使用・改変・複製・再配布を禁じます。内容を引用したい場合は [poker.kohei.dev](https://poker.kohei.dev) へのリンクと、poker.kohei.devから引用していることを明示していただければ可能です。ただし、あくまで個人の理解にすぎず、内容の正確さについて保証できないことをご容赦ください。
 
-## Learn more
-
-To learn more about the technologies used in this site template, see the following resources:
-
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
-- [Framer Motion](https://www.framer.com/docs/) - the official Framer Motion documentation
-- [MDX](https://mdxjs.com/) - the official MDX documentation
-- [Algolia Autocomplete](https://www.algolia.com/doc/ui-libraries/autocomplete/introduction/what-is-autocomplete/) - the official Algolia Autocomplete documentation
-- [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) - the official Zustand documentation
+このリポジトリはオープンソースですが、Tailwind UIより提供されたUIコンポーネントを含むあらゆるコードは再配布を意図しておりません。Tailwind UI由来のコードは[Tailwind UI Personal License](https://tailwindui.com/license)下にあります。
