@@ -156,7 +156,7 @@ export const Resource: FC<ResourceProps> = ({
       <div className="relative rounded-2xl px-4 pb-4 pt-16">
         <ResourceIcon icon={icon} />
 
-        <h3 className="mt-4 text-sm font-semibold leading-7 text-gray-900 dark:text-white">
+        <h3 className="mt-4 text-base font-semibold leading-7 text-gray-900 dark:text-white">
           <Link href={href}>
             <span className="absolute inset-0 rounded-2xl" />
             {name}

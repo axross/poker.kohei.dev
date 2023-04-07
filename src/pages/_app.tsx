@@ -1,5 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
 import "focus-visible";
+import "katex/dist/katex.min.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { Router, useRouter } from "next/router";
@@ -12,7 +13,6 @@ import {
   socialLinks,
   topLevelLinks,
 } from "~/constants/navigation";
-import "katex/dist/latex.min.css";
 import "~/globals.css";
 
 function onRouteChange() {

@@ -40,7 +40,7 @@ module.exports = ({ theme }) => ({
       // Base
       color: 'var(--tw-prose-body)',
       fontSize: theme('fontSize.base')[0],
-      lineHeight: theme('lineHeight.7'),
+      lineHeight: theme('lineHeight.loose'),
 
       // Layout
       '> *': {
@@ -56,19 +56,20 @@ module.exports = ({ theme }) => ({
 
       // Text
       p: {
-        marginTop: theme('spacing.6'),
-        marginBottom: theme('spacing.6'),
+        marginTop: theme('spacing.8'),
+        marginBottom: theme('spacing.8'),
       },
       '[class~="lead"]': {
-        fontSize: theme('fontSize.lg')[0],
         ...theme('fontSize.lg')[1],
+        fontSize: theme('fontSize.lg')[0],
+        lineHeight: theme("lineHeight.[1.75]"),
       },
 
       // Lists
       ol: {
         listStyleType: 'decimal',
-        marginTop: theme('spacing.5'),
-        marginBottom: theme('spacing.5'),
+        marginTop: theme('spacing.6'),
+        marginBottom: theme('spacing.6'),
         paddingLeft: '1.625rem',
       },
       'ol[type="A"]': {
@@ -100,8 +101,8 @@ module.exports = ({ theme }) => ({
       },
       ul: {
         listStyleType: 'disc',
-        marginTop: theme('spacing.5'),
-        marginBottom: theme('spacing.5'),
+        marginTop: theme('spacing.6'),
+        marginBottom: theme('spacing.6'),
         paddingLeft: '1.625rem',
       },
       li: {
@@ -109,7 +110,7 @@ module.exports = ({ theme }) => ({
         marginBottom: theme('spacing.2'),
       },
       ':is(ol, ul) > li': {
-        paddingLeft: theme('spacing[1.5]'),
+        paddingLeft: theme('spacing.2'),
       },
       'ol > li::marker': {
         fontWeight: '400',
@@ -119,42 +120,42 @@ module.exports = ({ theme }) => ({
         color: 'var(--tw-prose-bullets)',
       },
       '> ul > li p': {
-        marginTop: theme('spacing.3'),
-        marginBottom: theme('spacing.3'),
+        marginTop: theme('spacing.4'),
+        marginBottom: theme('spacing.4'),
       },
       '> ul > li > *:first-child': {
-        marginTop: theme('spacing.5'),
+        marginTop: theme('spacing.6'),
       },
       '> ul > li > *:last-child': {
-        marginBottom: theme('spacing.5'),
+        marginBottom: theme('spacing.6'),
       },
       '> ol > li > *:first-child': {
-        marginTop: theme('spacing.5'),
+        marginTop: theme('spacing.6'),
       },
       '> ol > li > *:last-child': {
-        marginBottom: theme('spacing.5'),
+        marginBottom: theme('spacing.6'),
       },
       'ul ul, ul ol, ol ul, ol ol': {
-        marginTop: theme('spacing.3'),
-        marginBottom: theme('spacing.3'),
+        marginTop: theme('spacing.4'),
+        marginBottom: theme('spacing.4'),
       },
 
       // Horizontal rules
       hr: {
         borderColor: 'var(--tw-prose-hr)',
         borderTopWidth: 1,
-        marginTop: theme('spacing.16'),
-        marginBottom: theme('spacing.16'),
+        marginTop: theme('spacing.20'),
+        marginBottom: theme('spacing.20'),
         maxWidth: 'none',
-        marginLeft: `calc(-1 * ${theme('spacing.4')})`,
-        marginRight: `calc(-1 * ${theme('spacing.4')})`,
+        marginLeft: `calc(-1 * ${theme('spacing.5')})`,
+        marginRight: `calc(-1 * ${theme('spacing.5')})`,
         '@screen sm': {
-          marginLeft: `calc(-1 * ${theme('spacing.6')})`,
-          marginRight: `calc(-1 * ${theme('spacing.6')})`,
-        },
-        '@screen lg': {
           marginLeft: `calc(-1 * ${theme('spacing.8')})`,
           marginRight: `calc(-1 * ${theme('spacing.8')})`,
+        },
+        '@screen lg': {
+          marginLeft: `calc(-1 * ${theme('spacing.10')})`,
+          marginRight: `calc(-1 * ${theme('spacing.10')})`,
         },
       },
 
@@ -166,9 +167,9 @@ module.exports = ({ theme }) => ({
         borderLeftWidth: '0.25rem',
         borderLeftColor: 'var(--tw-prose-quote-borders)',
         quotes: '"\\201C""\\201D""\\2018""\\2019"',
-        marginTop: theme('spacing.8'),
-        marginBottom: theme('spacing.8'),
-        paddingLeft: theme('spacing.5'),
+        marginTop: theme('spacing.10'),
+        marginBottom: theme('spacing.10'),
+        paddingLeft: theme('spacing.6'),
       },
       'blockquote p:first-of-type::before': {
         content: 'open-quote',
@@ -183,29 +184,29 @@ module.exports = ({ theme }) => ({
         fontWeight: '700',
         fontSize: theme('fontSize.3xl')[0],
         ...theme('fontSize.3xl')[1],
-        marginBottom: theme('spacing.2'),
+        marginBottom: theme('spacing.4'),
       },
       h2: {
         color: 'var(--tw-prose-headings)',
         fontWeight: '600',
-        fontSize: theme('fontSize.xl')[0],
-        ...theme('fontSize.xl')[1],
-        marginTop: theme('spacing.16'),
-        marginBottom: theme('spacing.2'),
+        fontSize: theme('fontSize.2xl')[0],
+        ...theme('fontSize.2xl')[1],
+        marginTop: theme('spacing.20'),
+        marginBottom: theme('spacing.4'),
       },
       h3: {
         color: 'var(--tw-prose-headings)',
-        fontSize: theme('fontSize.lg')[0],
-        ...theme('fontSize.lg')[1],
+        fontSize: theme('fontSize.xl')[0],
+        ...theme('fontSize.xl')[1],
         fontWeight: '600',
-        marginTop: theme('spacing.10'),
-        marginBottom: theme('spacing.2'),
+        marginTop: theme('spacing.12'),
+        marginBottom: theme('spacing.4'),
       },
 
       // Media
       'img, video, figure': {
-        marginTop: theme('spacing.8'),
-        marginBottom: theme('spacing.8'),
+        marginTop: theme('spacing.10'),
+        marginBottom: theme('spacing.12'),
       },
       'figure > *': {
         marginTop: '0',
@@ -215,7 +216,7 @@ module.exports = ({ theme }) => ({
         color: 'var(--tw-prose-captions)',
         fontSize: theme('fontSize.sm')[0],
         ...theme('fontSize.sm')[1],
-        marginTop: theme('spacing.2'),
+        marginTop: theme('spacing.4'),
       },
 
       // Tables
@@ -223,9 +224,9 @@ module.exports = ({ theme }) => ({
         width: '100%',
         tableLayout: 'auto',
         textAlign: 'left',
-        marginTop: theme('spacing.8'),
-        marginBottom: theme('spacing.8'),
-        lineHeight: theme('lineHeight.6'),
+        marginTop: theme('spacing.12'),
+        marginBottom: theme('spacing.12'),
+        lineHeight: theme('lineHeight.10'),
       },
       thead: {
         borderBottomWidth: '1px',
@@ -307,7 +308,7 @@ module.exports = ({ theme }) => ({
         paddingLeft: theme('padding[1.5]'),
         boxShadow: 'inset 0 0 0 1px var(--tw-prose-code-ring)',
         backgroundColor: 'var(--tw-prose-code-bg)',
-        fontSize: theme('fontSize.xs'),
+        fontSize: theme('fontSize.sm'),
       },
       ':is(a, h1, h2, h3, blockquote, thead th) code': {
         color: 'inherit',

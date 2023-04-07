@@ -20,25 +20,42 @@ export const topLevelLinks: TopLevelLink[] = [
 
 export const pageLinkGroups: PageLinkGroup[] = [
   {
-    title: "Guides",
+    title: "はじめに",
     links: [
-      { title: "Introduction", href: "/" },
-      { title: "Quickstart", href: "/quickstart" },
-      { title: "SDKs", href: "/sdks" },
-      { title: "Authentication", href: "/authentication" },
-      { title: "Pagination", href: "/pagination" },
-      { title: "Errors", href: "/errors" },
-      { title: "Webhooks", href: "/webhooks" },
+      { title: "このウェブサイトについて", href: "/" },
+      { title: "ゲーム理論とナッシュ均衡", href: "/game-theory-101" },
+      { title: "ポーカーとはどんなゲームか", href: "/what-is-poker-actually" },
     ],
   },
   {
-    title: "Resources",
+    title: "GTO基礎",
     links: [
-      { title: "Contacts", href: "/contacts" },
-      { title: "Conversations", href: "/conversations" },
-      { title: "Messages", href: "/messages" },
-      { title: "Groups", href: "/groups" },
-      { title: "Attachments", href: "/attachments" },
+      { title: "ハンドの性能の定量化", href: "/gto-basic/quantifying-hands" },
+      {
+        title: "ハンドレンジの分類と観点",
+        href: "/gto-basic/categorizing-hand-ranges",
+      },
+      {
+        title: "レンジアドバンテージの活用",
+        href: "/gto-basic/range-advantage-and-its-transition",
+      },
+      {
+        title: "ベットにまつわる均衡",
+        href: "/gto-basic/betting-in-equilibrium",
+      },
+    ],
+  },
+  {
+    title: "データ集",
+    links: [
+      {
+        title: "よく起こる状況とその確率",
+        href: "/data-tables/common-probabilities",
+      },
+      {
+        title: "スターティングハンドレンジ",
+        href: "/data-tables/starting-hand-ranges",
+      },
     ],
   },
 ];
@@ -46,17 +63,17 @@ export const pageLinkGroups: PageLinkGroup[] = [
 export const socialLinks: SocialLink[] = [
   {
     icon: TwitterIcon,
-    href: "#",
-    label: "Follow us on Twitter",
+    href: "https://twitter.com/axross_",
+    label: "Follow me on Twitter",
   },
   {
     icon: GitHubIcon,
-    href: "#",
-    label: "Follow us on GitHub",
+    href: "https://github.com/axross",
+    label: "Follow me on GitHub",
   },
   {
     icon: DiscordIcon,
-    href: "#",
-    label: "Join our Discord server",
+    href: "https://discordapp.com/users/296974487377936384",
+    label: "Follow me on Discord",
   },
 ];

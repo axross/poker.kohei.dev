@@ -88,7 +88,7 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(
           />
 
           <Link href="/" aria-label="Home">
-            <Logo className="h-6" />
+            <Logo className="h-6 text-gray-950 dark:text-white" />
           </Link>
         </div>
 
@@ -109,10 +109,6 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(
             <MobileSearch />
 
             <ModeToggle />
-          </div>
-
-          <div className="hidden min-[416px]:contents">
-            <Button href="#">Sign in</Button>
           </div>
         </div>
       </motion.div>

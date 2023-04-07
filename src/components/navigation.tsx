@@ -273,12 +273,6 @@ export const Navigation: FC<NavigationProps> = ({
             className={i === 0 ? "md:mt-0" : undefined}
           />
         ))}
-
-        <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
-          <Button href="#" variant="filled" className="w-full">
-            Sign in
-          </Button>
-        </li>
       </ul>
     </nav>
   );

@@ -45,7 +45,7 @@ export const Library: FC<LibraryProps> = ({
       {...props}
     >
       <div className="flex-auto">
-        <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+        <h3 className="text-base font-semibold text-gray-900 dark:text-white">
           {name}
         </h3>
 

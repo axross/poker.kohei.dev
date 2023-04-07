@@ -33,7 +33,7 @@ export const Guide: FC<GuideProps> = ({
 }) => {
   return (
     <div {...props}>
-      <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+      <h3 className="text-base font-semibold text-gray-900 dark:text-white">
         {name}
       </h3>
 

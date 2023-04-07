@@ -1,0 +1,392 @@
+import { Card } from "~/components/card";
+import { CardList } from "~/components/card-list";
+import { Chart, ChartArea, ChartAxis, ChartContainer } from "~/components/chart";
+
+# レンジアドバンテージの活用
+
+その状況に応じて自分と相手のどちらの方が有利かを考える指針として、どちらのハンドレンジがよりアドバンテージを有しているかという考え方があります。どれくらいレンジアドバンテージを有しているかを理解すると、自分がベットするべきなのかチェックするべきなのか、あるいはどれくらいのサイズをベットするべきなのか考える助けになります。
+
+## ナッツアドバンテージ
+
+次のチャートは100BB Effective 6-maxでのUTG (赤) の 2.5BB オープンに対してBB (緑) がコールした後、フロップが <CardList>AhQd7c</CardList> になったときの2人のエクイティを表したものです。X軸はEQ、Y軸はそのEQのハンドをどれだけ所持しうるかという割合を示しています。
+
+<ChartContainer className="[--bb-color:theme(colors.indigo.500)] [--utg-color:theme(colors.pink.500)]">
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.5]}
+      tickFormat={(y) => `${y * 100}%`}
+      label="所持割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.02, 0.06, 0.12, 0.7, 0.85, 0.95, 1]}
+      tickFormat={["低EQ", null, null, null, null, null, null, "高EQ"]}
+      label="エクイティ"
+      style={{
+        grid: {
+          stroke: "currentColor",
+          opacity: 0.5,
+          strokeDasharray: "6, 6",
+          strokeLineCap: "round",
+        }
+      }}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0.02 }, { x: 0.05, y: 0.08 }, { x: 0.15, y: 0.14 }, { x: 0.25, y: 0.24 }, { x: 0.35, y: 0.148 }, { x: 0.45, y: 0.11 }, { x: 0.55, y: 0.045 }, { x: 0.65, y: 0.084 }, { x: 0.75, y: 0.083 }, { x: 0.85, y: 0.05 }, { x: 0.95, y: 0 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--bb-color)" }}}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0 }, { x: 0.05, y: 0 }, { x: 0.15, y: 0.07 }, { x: 0.25, y: 0.15 }, { x: 0.35, y: 0.099 }, { x: 0.45, y: 0.18 }, { x: 0.55, y: 0.094 }, { x: 0.65, y: 0.093 }, { x: 0.75, y: 0.212 }, { x: 0.85, y: 0.203 }, { x: 0.95, y: 0.097 }, { x: 1, y: 0.032 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--utg-color)" }}}
+    />
+  </Chart>
+</ChartContainer>
+
+UTGのプレイヤーは高EQのレンジのハンドが非常に多く、右端の方ではBBのプレイヤーがほとんどハンドを持ちえないことがわかります。これはナッツ級のハンドの所持割合の大半はUTGのプレイヤーであり、この「相手よりも多くナッツハンドを持ちうる」という状況有利を **ナッツアドバンテージ** と呼びます。
+
+多くの場合はアグレッサーがナッツアドバンテージを有していますが、例外もあります。別のスポットを見てみましょう。次のチャートは同じ条件でフロップが <CardList>9s8h7d</CardList> になったあと両者チェック、ターンで <Card>Jc</Card> がランアウトした時のものです。
+
+<ChartContainer className="[--bb-color:theme(colors.indigo.500)] [--utg-color:theme(colors.pink.500)]">
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.5]}
+      tickFormat={(y) => `${y * 100}%`}
+      label="所持割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.02, 0.06, 0.12, 0.7, 0.85, 0.95, 1]}
+      tickFormat={["低EQ", null, null, null, null, null, null, "高EQ"]}
+      label="エクイティ"
+      style={{
+        grid: {
+          stroke: "currentColor",
+          opacity: 0.5,
+          strokeDasharray: "6, 6",
+          strokeLineCap: "round",
+        }
+      }}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0.08 }, { x: 0.05, y: 0.051 }, { x: 0.15, y: 0.11 }, { x: 0.25, y: 0.13 }, { x: 0.35, y: 0.155 }, { x: 0.45, y: 0.16 }, { x: 0.55, y: 0.013 }, { x: 0.65, y: 0.007 }, { x: 0.75, y: 0.059 }, { x: 0.85, y: 0.147 }, { x: 0.95, y: 0.043 }, { x: 1, y: 0.011 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--bb-color)" }}}
+    />
+
+    <ChartArea
+      data={[{ x: 0.05, y: 0 }, { x: 0.15, y: 0.05 }, { x: 0.25, y: 0.1 }, { x: 0.35, y: 0.18 }, { x: 0.45, y: 0.173 }, { x: 0.55, y: 0.112 }, { x: 0.65, y: 0.25 }, { x: 0.75, y: 0.036 }, { x: 0.85, y: 0.124 }, { x: 0.95, y: 0.039 }, { x: 1, y: 0 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--utg-color)" }}}
+    />
+  </Chart>
+</ChartContainer>
+
+さっきと大きく違うのは、UTGのプレイヤーよりも僅かにBBのプレイヤーの方がナッツレンジが多いということです。このシチュエーションではUTGのプレイヤーからナッツアドバンテージは消え失せ、BBのプレイヤーがナッツアドバンテージを有していることになります。
+
+ポラライズドレンジのベットによって利益を上げることができるのは、ナッツハンドの存在がレイズの抑止力となっていることが大きな役割を持っています。ナッツアドバンテージのないハンドレンジでベットした場合、相手はこちらのベットに怖がらずにレイズできてしまい、結果としてこちらが一定の割合でフォールドさせられてしまいます。ナッツアドバンテージが大きければ大きいほど相手の最高ハンドとの差が大きく離れていることを意味し、その場合はより高いベットサイズを用いてベットするのが利益的です。
+
+## エクイティアドバンテージ
+
+さて、次のチャートは同じように100BB Effective 6-maxでのUTG (赤) の 2.5BB オープンに対してBB (緑) がコールした後、フロップが <CardList>Jh8d8c</CardList> になったときの2人のエクイティを表したものです。
+
+<ChartContainer className="[--bb-color:theme(colors.indigo.500)] [--utg-color:theme(colors.pink.500)]">
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.5]}
+      tickFormat={(y) => `${y * 100}%`}
+      label="所持割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.02, 0.06, 0.12, 0.7, 0.85, 0.95, 1]}
+      tickFormat={["低EQ", null, null, null, null, null, null, "高EQ"]}
+      label="エクイティ"
+      style={{
+        grid: {
+          stroke: "currentColor",
+          opacity: 0.5,
+          strokeDasharray: "6, 6",
+          strokeLineCap: "round",
+        }
+      }}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0.03 }, { x: 0.05, y: 0.057 }, { x: 0.15, y: 0.15 }, { x: 0.25, y: 0.22 }, { x: 0.35, y: 0.182 }, { x: 0.45, y: 0.09 }, { x: 0.55, y: 0.05 }, { x: 0.65, y: 0.057 }, { x: 0.75, y: 0.071 }, { x: 0.85, y: 0 }, { x: 0.95, y: 0.073 }, { x: 1, y: 0.021 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--bb-color)" }}}
+    />
+
+    <ChartArea
+      data={[{ x: 0.05, y: 0 }, { x: 0.15, y: 0.008 }, { x: 0.25, y: 0.089 }, { x: 0.35, y: 0.135 }, { x: 0.45, y: 0.201 }, { x: 0.55, y: 0.213 }, { x: 0.65, y: 0.029 }, { x: 0.75, y: 0.138 }, { x: 0.85, y: 0.145 }, { x: 0.95, y: 0.032 }, { x: 1, y: 0.011 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--utg-color)" }}}
+    />
+  </Chart>
+</ChartContainer>
+
+ナッツアドバンテージは BB のプレイヤーが有しているものの、バリューレンジのハンドの多くを UTG のプレイヤーが有していることがわかります。また、ハンドレンジ全体で見た時にも UTG のプレイヤーのハンドレンジの方が BB のプレイヤーのものよりも高 EQ 側に多く分布していることがわかります。両者のハンドレンジ全体のEQを計算してみると UTG のプレイヤーが約 59.77% 、 BBのプレイヤーが 約40.22% のEQを有しています。
+
+このようなハンドレンジ全体でのEQ有利を **エクイティアドバンテージ** と呼びます。自信を持って大きなサイズのベットをできるのはナッツアドバンテージを有する BB のプレイヤーなのですが、ベットアクションをより多くとれるのはエクイティアドバンテージを有する UTG のプレイヤーなのです。
+
+上の例ではそれぞれ別のプレイヤーがナッツアドバンテージとエクイティアドバンテージを有していましたが、1人のプレイヤーが両方のアドバンテージを有していることは珍しくありません。ナッツアドバンテージの項で出てきた <CardList>AhQd7c</CardList> でのフロップを振り返ってみましょう。
+
+<ChartContainer className="[--bb-color:theme(colors.indigo.500)] [--utg-color:theme(colors.pink.500)]">
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.5]}
+      tickFormat={(y) => `${y * 100}%`}
+      label="所持割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.02, 0.06, 0.12, 0.7, 0.85, 0.95, 1]}
+      tickFormat={["低EQ", null, null, null, null, null, null, "高EQ"]}
+      label="エクイティ"
+      style={{
+        grid: {
+          stroke: "currentColor",
+          opacity: 0.5,
+          strokeDasharray: "6, 6",
+          strokeLineCap: "round",
+        }
+      }}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0.02 }, { x: 0.05, y: 0.08 }, { x: 0.15, y: 0.14 }, { x: 0.25, y: 0.24 }, { x: 0.35, y: 0.148 }, { x: 0.45, y: 0.11 }, { x: 0.55, y: 0.045 }, { x: 0.65, y: 0.084 }, { x: 0.75, y: 0.083 }, { x: 0.85, y: 0.05 }, { x: 0.95, y: 0 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--bb-color)" }}}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0 }, { x: 0.05, y: 0 }, { x: 0.15, y: 0.07 }, { x: 0.25, y: 0.15 }, { x: 0.35, y: 0.099 }, { x: 0.45, y: 0.18 }, { x: 0.55, y: 0.094 }, { x: 0.65, y: 0.093 }, { x: 0.75, y: 0.212 }, { x: 0.85, y: 0.203 }, { x: 0.95, y: 0.097 }, { x: 1, y: 0.032 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--utg-color)" }}}
+    />
+  </Chart>
+</ChartContainer>
+
+ナッツレンジのハンドをより多く持ちえるのは UTG のプレイヤーで、UTG のプレイヤーのハンドレンジは BB のプレイヤーのものよりも明らかに高EQ側に多く分布しています。ナッツアドバンテージもエクイティアドバンテージもUTGのプレイヤーが有していることが明らかです。
+
+## ゲーム進行によるアドバンテージの変化
+
+これまではレンジアドバンテージについてフロップでのシチュエーションを主に見てきましたが、ランアウトによってアドバンテージにどのような変化が起こるのか、そしてどんなランアウトがアドバンテージに変化を及ぼしやすいのかについて見ていきます。
+
+### レンジアドバンテージの逆転
+
+これまでと同じく、100BB Effective 6-maxでの UTG のプレイヤー (赤) の 2.5BB オープンに対して BB のプレイヤー (緑) がコールしたとして、フロップが <CardList>AhJh2c</CardList> だった場合を考えてみます。こちらも同様に2人のEQをチャートで表してみましょう。
+
+<ChartContainer className="[--bb-color:theme(colors.indigo.500)] [--utg-color:theme(colors.pink.500)]">
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.5]}
+      tickFormat={(y) => `${y * 100}%`}
+      label="所持割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.02, 0.06, 0.12, 0.7, 0.85, 0.95, 1]}
+      tickFormat={["低EQ", null, null, null, null, null, null, "高EQ"]}
+      label="エクイティ"
+      style={{
+        grid: {
+          stroke: "currentColor",
+          opacity: 0.5,
+          strokeDasharray: "6, 6",
+          strokeLineCap: "round",
+        }
+      }}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0.02 }, { x: 0.05, y: 0.08 }, { x: 0.15, y: 0.12 }, { x: 0.25, y: 0.18 }, { x: 0.35, y: 0.236 }, { x: 0.45, y: 0.15 }, { x: 0.55, y: 0.069 }, { x: 0.65, y: 0.08 }, { x: 0.75, y: 0.032 }, { x: 0.85, y: 0.052 }, { x: 0.95, y: 0 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--bb-color)" }}}
+    />
+
+    <ChartArea
+      data={[{ x: 0.05, y: 0.004 }, { x: 0.15, y: 0.09 }, { x: 0.25, y: 0.13 }, { x: 0.35, y: 0.19 }, { x: 0.45, y: 0.13 }, { x: 0.55, y: 0.09 }, { x: 0.65, y: 0.125 }, { x: 0.75, y: 0.239 }, { x: 0.85, y: 0.192 }, { x: 0.95, y: 0.051 }, { x: 1, y: 0.014 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--utg-color)" }}}
+    />
+  </Chart>
+</ChartContainer>
+
+ナッツアドバンテージもエクイティアドバンテージも UTG のプレイヤーが有しています。とくにエクイティアドバンテージの差は絶大で、 UTG のプレイヤーはハンドレンジのほとんどのハンドでベットするでしょう。さて、 UTG のプレイヤーは実際にポットの $\frac13$ のベットをし、 BB のプレイヤーがコールしました。ターンのカードは <Card>Th</Card> で、ボードは <CardList>AhJh2cTh</CardList> となりました。この時の両者の EQ をチャートで見比べてみます。
+
+<ChartContainer className="[--bb-color:theme(colors.indigo.500)] [--utg-color:theme(colors.pink.500)]">
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.5]}
+      tickFormat={(y) => `${y * 100}%`}
+      label="所持割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.02, 0.06, 0.12, 0.7, 0.85, 0.95, 1]}
+      tickFormat={["低EQ", null, null, null, null, null, null, "高EQ"]}
+      label="エクイティ"
+      style={{
+        grid: {
+          stroke: "currentColor",
+          opacity: 0.5,
+          strokeDasharray: "6, 6",
+          strokeLineCap: "round",
+        }
+      }}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0.01 }, { x: 0.05, y: 0.022 }, { x: 0.15, y: 0.03 }, { x: 0.25, y: 0.0182 }, { x: 0.35, y: 0.2 }, { x: 0.45, y: 0.18 }, { x: 0.55, y: 0.135 }, { x: 0.65, y: 0.135 }, { x: 0.75, y: 0.019 }, { x: 0.85, y: 0.068 }, { x: 0.95, y: 0.135 }, { x: 1, y: 0.04 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--bb-color)" }}}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0 }, { x: 0.05, y: 0.03 }, { x: 0.15, y: 0.11 }, { x: 0.25, y: 0.15 }, { x: 0.35, y: 0.13 }, { x: 0.45, y: 0.12 }, { x: 0.55, y: 0.166 }, { x: 0.65, y: 0.18 }, { x: 0.75, y: 0.13 }, { x: 0.85, y: 0.038 }, { x: 0.95, y: 0.04 }, { x: 1, y: 0.01 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--utg-color)" }}}
+    />
+  </Chart>
+</ChartContainer>
+
+なんと、EQの分布に大きな変化が起きてしまいました。ナッツレンジの多くを持っているのは今や BB のプレイヤーで、エクイティアドバンテージについても UTG のプレイヤーはもう充分に有しているとは言えません。UTGのプレイヤーにとっては、この <Card>Th</Card> はその後のベットアクションをストップさせる危険信号なのです。
+
+なぜここまで劇的な **レンジアドバンテージの逆転** が起こってしまったのでしょう。まず考えられるのはフラッシュの完成です。 <Card>Ah</Card> を含むスーテッドハンドは誰も持ちえません。 UTG のプレイヤーがハートのスーテッドハンドを持っているとしたら <CardList>KhQh</CardList> や <CardList>Qh9h</CardList>、<CardList>Kh9h</CardList>-<CardList>Kh5h</CardList> あたりでしょう。ただし <CardList>Kh7h</CardList> <CardList>Kh6h</CardList> <CardList>Kh5h</CardList> は常に UTG からオープンするようなハンドではないので、これらの割合が比較的低いと推測できます。本来は他にも <CardList>QhJh</CardList> <CardList>JhTh</CardList> <CardList>Th9h</CardList> あたりも UTG のオープンレンジにあると考えられるのですが、どれもボードのカードがブロックしてしまっており、実に UTG のプレイヤーのハンドレンジにフラッシュ完成ハンドがかなり少ないことがわかります。
+
+反面、BB のプレイヤーのハンドレンジには、UTG が持ちえるフラッシュ完成ハンドすべてに加えて <Card>Kh</Card> または <Card>Qh</Card> を含むより広い範囲のスーテッドハンドや、 <CardList>8h7h</CardList> などに始まる0-2ギャップのスーテッドコネクターなど数多く存在します。実にフラッシュ完成ハンドの種類と頻度では UTG のプレイヤーのハンドレンジの4倍近くあるのです。
+
+|| UTGのフラッシュハンド | BBのフラッシュハンド |
+| --- | --- | --- |
+| **割合が高い** | <CardList>KhQh</CardList> <CardList>Kh9h</CardList> <CardList>Qh9h</CardList> <CardList>Qh9h</CardList> | <CardList>Kh9h</CardList> <CardList>Kh8h</CardList> <CardList>Kh7h</CardList> <CardList>Qh9h</CardList> <CardList>Qh8h</CardList> <CardList>Qh7h</CardList> <CardList>Qh6h</CardList> <CardList>9h7h</CardList> <CardList>9h6h</CardList> <CardList>8h7h</CardList> <CardList>8h6h</CardList> <CardList>8h5h</CardList> <CardList>7h6h</CardList> <CardList>7h5h</CardList> <CardList>6h5h</CardList> <CardList>6h4h</CardList> |
+| **割合が低い** | <CardList>Kh8h</CardList> <CardList>Kh7h</CardList> <CardList>Kh6h</CardList> <CardList>Kh5h</CardList> <CardList>9h8h</CardList> <CardList>8h7h</CardList> <CardList>7h6h</CardList> <CardList>6h5h</CardList> <CardList>5h4h</CardList> | <CardList>KhQh</CardList> <CardList>Kh6h</CardList> <CardList>Kh5h</CardList> <CardList>Kh4h</CardList> <CardList>Kh3h</CardList> <CardList>Kh2h</CardList> <CardList>Qh5h</CardList> <CardList>Qh4h</CardList> <CardList>9h8h</CardList> <CardList>7h4h</CardList> <CardList>6h3h</CardList> <CardList>5h4h</CardList> <CardList>4h3h</CardList> <CardList>Qh9h</CardList> |
+
+ターンのカードが <Card>Kh</Card> <Card>Qh</Card> でもこの逆転現象が起こります。これらはいずれも UTG のハンドレンジにあるハートのスーテッドハンドをブロックしてしまうのが原因です。<Card>7h</Card> <Card>6h</Card> などでもナッツアドバンテージの逆転は僅かに起こるものの、エクイティアドバンテージの差も埋まってしまうようなここまで大きな逆転は起こりません。
+
+<ChartContainer className="[--bb-color:theme(colors.indigo.500)] [--utg-color:theme(colors.pink.500)]">
+  <Chart>
+    <ChartAxis
+      dependentAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.5]}
+      tickFormat={(y) => `${y * 100}%`}
+      label="所持割合"
+    />
+
+    <ChartAxis
+      crossAxis
+      minDomain={0}
+      maxDomain={1}
+      tickValues={[0, 0.02, 0.06, 0.12, 0.7, 0.85, 0.95, 1]}
+      tickFormat={["低EQ", null, null, null, null, null, null, "高EQ"]}
+      label="エクイティ"
+      style={{
+        grid: {
+          stroke: "currentColor",
+          opacity: 0.5,
+          strokeDasharray: "6, 6",
+          strokeLineCap: "round",
+        }
+      }}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0.02 }, { x: 0.05, y: 0.031 }, { x: 0.15, y: 0.041 }, { x: 0.25, y: 0.063 }, { x: 0.35, y: 0.096 }, { x: 0.45, y: 0.172 }, { x: 0.55, y: 0.228 }, { x: 0.65, y: 0.105 }, { x: 0.75, y: 0.113 }, { x: 0.85, y: 0.034 }, { x: 0.95, y: 0.087 }, { x: 1, y: 0.028 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--bb-color)" }}}
+    />
+
+    <ChartArea
+      data={[{ x: 0, y: 0.019 }, { x: 0.05, y: 0.032 }, { x: 0.15, y: 0.051 }, { x: 0.25, y: 0.067 }, { x: 0.35, y: 0.085 }, { x: 0.45, y: 0.102 }, { x: 0.55, y: 0.158 }, { x: 0.65, y: 0.141 }, { x: 0.75, y: 0.11 }, { x: 0.85, y: 0.096 }, { x: 0.95, y: 0.054 }, { x: 1, y: 0.018 }]}
+      interpolation="natural"
+      style={{ data: { fill: "var(--utg-color)" }}}
+    />
+  </Chart>
+</ChartContainer>
+
+<div className="text-slate-700 dark:text-slate-400 text-xs leading-tight text-center">
+  ターンが <Card>7h</Card> だった時の両者のEQとその所持割合。レンジアドバンテージの逆転は若干緩やか
+</div>
+
+### ボードのダイナミシティ
+
+このように、ポストフロップ以降ではレンジアドバンテージが入れ替わりやすいボードとそうでないボードがあります。レンジアドバンテージの逆転が起こりやすいものを **ダイナミックなボード (静的なボード)** と、あまり逆転しないものを **スタティックなボード (動的なボード)** と表現します。
+
+フロップでのボードのパターンを分類し、そのうちよく起こるものを一つずつ見ていきます。
+
+#### ペアボード
+
+例 : <CardList>KsKh5c</CardList>
+
+フロップ時点ではペアになっているランクが <Card>Ax</Card> <Card>Kx</Card> <Card>Qx</Card> <Card>Jx</Card> などであればアグレッサーのトリップスが充分に多いためにアグレッサー有利です。<CardList>Kh8s8d</CardList> など、ペアになっているのがミドルランクになるとコーラー側にナッツアドバンテージが移り、ドンクベットを選択する誘引を生みます。ペアではない3枚目のカードはエクイティアドバンテージに影響し、<Card>Ax</Card> <Card>Kx</Card> などであればアグレッサーに与えるエクイティアドバンテージが大きくなります。
+
+フルハウスが作れる関係上、ターン以降のカードでもう一度レンジアドバンテージの逆転が起こる可能性があります。たとえばターンの <Card>Ad</Card> などはアグレッサーの <CardList>AsAh</CardList> をフルハウスに成長させます。
+
+#### モノトーン
+
+例 : <CardList>Qd8d2d</CardList>
+
+フラッシュができる組み合わせのうち、ブロックされているものが少ない方がナッツアドバンテージを手にします。<CardList>Qd8d2d</CardList> のようなボードはアグレッサーへのブロッカーが少ないため強いナッツアドバンテージを与える結果になります。<Card>Ax</Card> を含む場合はアグレッサーへの強いブロッカーになるためプレイヤー間のナッツレンジの差が小さくなり、ナッツアドバンテージが失われます。
+
+モノトーンボード自体はエクイティアドバンテージにあまり影響を与えません。ボードにあるランクどおりのエクイティアドバンテージを各プレイヤーに与えることになります。ですがエクイティアドバンテージを有していないプレイヤーにもコールへのより強い誘引を与えるため、ターンやリバーまでもつれ込むことが多くなります。
+
+ターン以降で4枚目の同スートのカード (例: <Card>Jd</Card>) がランアウトすると、それまでナッツアドバンテージを有していたプレイヤーのハンドレンジが両極化され、ナッツアドバンテージがより強くなります。反面、コールしていたプレイヤーにとってはエクイティアドバンテージがより支えられることになりハンドレンジが凝縮化されます。
+
+#### ツートーン
+
+例 : <CardList>Qd8d2c</CardList>
+
+ツートーンはそれ単体ではあまり大きなレンジアドバンテージの逆転をもたらしません。カードのランクどおりのエクイティアドバンテージを各プレイヤーに与えます。
+
+フロップのカードすべてがミドルランクからローランクで構成されている時はナッツアドバンテージを持つのはコーラーのプレイヤーになりますが、それでもコーラーのプレイヤーのドンクベットの誘引になるほど強い逆転ではありません。
+
+#### コネクテッド
+
+例 : <CardList>9s8h7d</CardList>
+
+ストレートは完成しても相手にフラッシュやフルハウスのアウツがある状況が多いため、通常よりもドンクベットやレイズの誘引が強くなります。ミドルからローランクで構成されたコネクテッドはコーラー側に有利で、ナッツアドバンテージとエクイティアドバンテージの両方を与え、いくつかのハンドでドンクベットを選択させることになります。<Card>Jx</Card> 以上のカードを含むコネクテッドはレンジアドバンテージの逆転を起こしません。
+
+ターン以降で4枚目のコネクテッドカードがランアウトすると、それまでナッツアドバンテージを有していたプレイヤーのハンドレンジが両極化されます。それ以外はカードのランクどおりのエクイティアドバンテージをプレイヤーに与えることになります。
