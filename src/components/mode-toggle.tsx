@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { SunIcon } from "~/components/icons/sun-icon";
 import { MoonIcon } from "~/components/icons/moon-icon";
+import { SunIcon } from "~/components/icons/sun-icon";
 
 export type ModeToggleProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -19,9 +19,9 @@ export const ModeToggle = forwardRef<HTMLButtonElement, ModeToggleProps>(
         ref={ref}
         {...props}
       >
-        <SunIcon className="h-5 w-5 stroke-gray-900 dark:hidden" />
+        <SunIcon className="h-5 w-5 text-gray-900 dark:hidden" />
 
-        <MoonIcon className="hidden h-5 w-5 stroke-white dark:block" />
+        <MoonIcon className="hidden h-5 w-5 text-white dark:block" />
       </button>
     );
   }
@@ -38,9 +38,9 @@ function disableTransitionsTemporarily() {
 function toggleMode() {
   disableTransitionsTemporarily();
 
-  let darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  let isSystemDarkMode = darkModeMediaQuery.matches;
-  let isDarkMode = document.documentElement.classList.toggle("dark");
+  const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const isSystemDarkMode = darkModeMediaQuery.matches;
+  const isDarkMode = document.documentElement.classList.toggle("dark");
 
   if (isDarkMode === isSystemDarkMode) {
     delete window.localStorage.isDarkMode;

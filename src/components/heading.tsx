@@ -9,9 +9,9 @@ import {
   useRef,
 } from "react";
 import { twMerge } from "tailwind-merge";
+import { AnchorIcon } from "~/components/icons/anchor-icon";
 import { useSectionStore } from "~/components/section-provider";
 import { Tag } from "~/components/tag";
-import { AnchorIcon } from "~/components/icons/anchor-icon";
 import { remToPx } from "~/lib/rem-to-px";
 
 interface EyebrowProps extends HTMLAttributes<HTMLDivElement> {
@@ -61,7 +61,7 @@ const Anchor: FC<AnchorProps> = ({
       {inView && (
         <div className="absolute ml-[calc(-1*var(--width))] mt-1 hidden w-[var(--width)] opacity-0 transition [--width:calc(2.625rem+0.5px+50%-min(50%,calc(theme(maxWidth.lg)+theme(spacing.8))))] group-hover:opacity-100 group-focus:opacity-100 md:block lg:z-50 2xl:[--width:theme(spacing.10)]">
           <div className="group/anchor block h-5 w-5 rounded-lg bg-gray-50 ring-1 ring-inset ring-gray-300 transition hover:ring-gray-500 dark:bg-gray-800 dark:ring-gray-700 dark:hover:bg-gray-700 dark:hover:ring-gray-600">
-            <AnchorIcon className="h-5 w-5 stroke-gray-500 transition dark:stroke-gray-400 dark:group-hover/anchor:stroke-white" />
+            <AnchorIcon className="h-5 w-5 text-gray-500 transition dark:text-gray-400 dark:group-hover/anchor:text-white" />
           </div>
         </div>
       )}
@@ -92,7 +92,7 @@ export const Heading: FC<HeadingProps> = ({
   const ref = useRef<HTMLHeadingElement>(null);
   const registerHeading = useSectionStore((s) => s.registerHeading);
 
-  let inView = useInView(ref, {
+  const inView = useInView(ref, {
     margin: `${remToPx(-3.5)}px 0px 0px 0px`,
     amount: "all",
   });

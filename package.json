@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "concurrently -n NEXT,STRY -c bgBlue,bgMagenta npm:dev-next npm:dev-sb",
+    "dev-next": "next dev",
+    "dev-sb": "storybook dev -p 6006",
+    "build": "npm run build-next && npm run build-sb",
+    "build-next": "next build",
+    "build-sb": "storybook build",
+    "format": "prettier --write ./src/**/**.{ts,tsx} ./mdx/**/**.mjs",
+    "lint": "prettier --list-different ./src/**/**.{ts,tsx} ./mdx/**/**.mjs && next lint"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
@@ -42,10 +46,21 @@
     "zustand": "^4.3.2"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.2",
+    "@storybook/addon-interactions": "^7.0.2",
+    "@storybook/addon-links": "^7.0.2",
+    "@storybook/blocks": "^7.0.2",
+    "@storybook/nextjs": "^7.0.2",
+    "@storybook/react": "^7.0.2",
+    "@storybook/testing-library": "^0.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "concurrently": "^8.0.1",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
+    "eslint-plugin-storybook": "^0.6.11",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.6",
+    "storybook": "^7.1.0-alpha.0",
     "typescript": "^5.0.3"
   }
 }

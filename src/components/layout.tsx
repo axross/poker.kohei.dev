@@ -8,13 +8,20 @@ import { Logo } from "~/components/logo";
 import { Navigation } from "~/components/navigation";
 import { Prose } from "~/components/prose";
 import { Section, SectionProvider } from "~/components/section-provider";
+import { PageLinkGroup, SocialLink, TopLevelLink } from "~/models/navigation";
 
 export interface LayoutProps extends HTMLAttributes<HTMLDivElement> {
   sections: Section[];
+  topLevelLinks: TopLevelLink[];
+  pageLinkGroups: PageLinkGroup[];
+  socialLinks: SocialLink[];
 }
 
 export const Layout: FC<LayoutProps> = ({
   sections = [],
+  topLevelLinks,
+  pageLinkGroups,
+  socialLinks,
   className,
   children,
   ...props
@@ -32,15 +39,25 @@ export const Layout: FC<LayoutProps> = ({
                 <Logo className="h-6" />
               </Link>
             </div>
-            <Header />
-            <Navigation className="hidden lg:mt-10 lg:block" />
+
+            <Header
+              topLevelLinks={topLevelLinks}
+              pageLinkGroups={pageLinkGroups}
+            />
+
+            <Navigation
+              topLevelLinks={topLevelLinks}
+              pageLinkGroups={pageLinkGroups}
+              className="hidden lg:mt-10 lg:block"
+            />
           </div>
         </motion.header>
         <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
           <main className="py-16">
             <Prose as="article">{children}</Prose>
           </main>
-          <Footer />
+
+          <Footer socialLinks={socialLinks} pageLinkGroups={pageLinkGroups} />
         </div>
       </div>
     </SectionProvider>

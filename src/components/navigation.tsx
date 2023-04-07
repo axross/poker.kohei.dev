@@ -7,12 +7,8 @@ import { Button } from "~/components/button";
 import { useIsInsideMobileNavigation } from "~/components/mobile-navigation";
 import { useSectionStore } from "~/components/section-provider";
 import { Tag } from "~/components/tag";
-import {
-  navigationGroups,
-  topLevelNavigationItems,
-} from "~/constants/navigation";
 import { remToPx } from "~/lib/rem-to-px";
-import { NavigationGroup } from "~/models/navigation";
+import { PageLinkGroup, TopLevelLink } from "~/models/navigation";
 
 function useInitialValue<V>(value: V, condition: boolean = true): V {
   const initialValue = useRef<V>(value).current;
@@ -81,12 +77,12 @@ const NavLink: FC<NavLinkProps> = ({
 
 interface VisibleSectionHighlightProps
   extends ComponentProps<typeof motion.div> {
-  group: NavigationGroup;
+  pageLinkGroup: PageLinkGroup;
   pathname: string;
 }
 
 const VisibleSectionHighlight: FC<VisibleSectionHighlightProps> = ({
-  group,
+  pageLinkGroup,
   pathname,
   ...props
 }) => {
@@ -110,7 +106,8 @@ const VisibleSectionHighlight: FC<VisibleSectionHighlightProps> = ({
     ? Math.max(1, visibleSections.length) * itemHeight
     : itemHeight;
   const top =
-    group.links.findIndex((link) => link.href === pathname) * itemHeight +
+    pageLinkGroup.links.findIndex((link) => link.href === pathname) *
+      itemHeight +
     firstVisibleSectionIndex * itemHeight;
 
   return (
@@ -127,19 +124,19 @@ const VisibleSectionHighlight: FC<VisibleSectionHighlightProps> = ({
 };
 
 interface ActivePageMarkerProps extends ComponentProps<typeof motion.div> {
-  group: NavigationGroup;
+  pageLinkGroup: PageLinkGroup;
   pathname: string;
 }
 
 const ActivePageMarker: FC<ActivePageMarkerProps> = ({
-  group,
+  pageLinkGroup,
   pathname,
   className,
   ...props
 }) => {
   const itemHeight = remToPx(2);
   const offset = remToPx(0.25);
-  const activePageIndex = group.links.findIndex(
+  const activePageIndex = pageLinkGroup.links.findIndex(
     (link) => link.href === pathname
   );
   const top = offset + activePageIndex * itemHeight;
@@ -158,25 +155,26 @@ const ActivePageMarker: FC<ActivePageMarkerProps> = ({
 };
 
 interface NavigationGroupItemProps extends HTMLAttributes<HTMLElement> {
-  group: NavigationGroup;
+  pageLinkGroup: PageLinkGroup;
 }
 
 const NavigationGroupItem: FC<NavigationGroupItemProps> = ({
-  group,
+  pageLinkGroup,
   className,
   ...props
 }) => {
   // If this is the mobile navigation then we always render the initial
   // state, so that the state does not change during the close animation.
   // The state will still update when we re-open (re-render) the navigation.
-  let isInsideMobileNavigation = useIsInsideMobileNavigation();
-  let [router, sections] = useInitialValue(
+  const isInsideMobileNavigation = useIsInsideMobileNavigation();
+  const [router, sections] = useInitialValue(
     [useRouter(), useSectionStore((s) => s.sections)],
     isInsideMobileNavigation
   );
 
-  let isActiveGroup =
-    group.links.findIndex((link) => link.href === router.pathname) !== -1;
+  const isActiveGroup =
+    pageLinkGroup.links.findIndex((link) => link.href === router.pathname) !==
+    -1;
 
   return (
     <li className={twMerge("relative mt-6", className)} {...props}>
@@ -184,25 +182,31 @@ const NavigationGroupItem: FC<NavigationGroupItemProps> = ({
         layout="position"
         className="text-xs font-semibold text-gray-900 dark:text-white"
       >
-        {group.title}
+        {pageLinkGroup.title}
       </motion.h2>
       <div className="relative mt-3 pl-2">
         <AnimatePresence initial={!isInsideMobileNavigation}>
           {isActiveGroup && (
-            <VisibleSectionHighlight group={group} pathname={router.pathname} />
+            <VisibleSectionHighlight
+              pageLinkGroup={pageLinkGroup}
+              pathname={router.pathname}
+            />
           )}
         </AnimatePresence>
         <motion.div
           layout
-          className="absolute inset-y-0 left-2 w-px bg-gray-900/10 dark:bg-white/5"
+          className="absolute inset-y-0 left-2 w-px bg-gray-950/10 dark:bg-white/5"
         />
         <AnimatePresence initial={false}>
           {isActiveGroup && (
-            <ActivePageMarker group={group} pathname={router.pathname} />
+            <ActivePageMarker
+              pageLinkGroup={pageLinkGroup}
+              pathname={router.pathname}
+            />
           )}
         </AnimatePresence>
         <ul role="list" className="border-l border-transparent">
-          {group.links.map((link) => (
+          {pageLinkGroup.links.map((link) => (
             <motion.li key={link.href} layout="position" className="relative">
               <NavLink href={link.href} active={link.href === router.pathname}>
                 {link.title}
@@ -243,23 +247,30 @@ const NavigationGroupItem: FC<NavigationGroupItemProps> = ({
   );
 };
 
-export type NavigationProps = HTMLAttributes<HTMLElement>;
+export interface NavigationProps extends HTMLAttributes<HTMLElement> {
+  topLevelLinks: TopLevelLink[];
+  pageLinkGroups: PageLinkGroup[];
+}
 
-export const Navigation: FC<NavigationProps> = (props) => {
+export const Navigation: FC<NavigationProps> = ({
+  topLevelLinks,
+  pageLinkGroups,
+  ...props
+}) => {
   return (
     <nav {...props}>
       <ul role="list">
-        {topLevelNavigationItems.map(({ title, href }) => (
+        {topLevelLinks.map(({ title, href }) => (
           <TopLevelNavItem href={href} key={`${title}-${href}`}>
             {title}
           </TopLevelNavItem>
         ))}
 
-        {navigationGroups.map((group, groupIndex) => (
+        {pageLinkGroups.map((pageLinkGroup, i) => (
           <NavigationGroupItem
-            key={group.title}
-            group={group}
-            className={groupIndex === 0 ? "md:mt-0" : undefined}
+            key={pageLinkGroup.title}
+            pageLinkGroup={pageLinkGroup}
+            className={i === 0 ? "md:mt-0" : undefined}
           />
         ))}
 

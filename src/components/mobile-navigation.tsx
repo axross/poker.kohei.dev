@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import { createContext, FC, Fragment, useContext } from "react";
 import { create } from "zustand";
 import { Header } from "~/components/header";
-import { Navigation } from "~/components/navigation";
 import { MenuIcon } from "~/components/icons/menu-icon";
 import { XIcon } from "~/components/icons/x-icon";
+import { Navigation, NavigationProps } from "~/components/navigation";
+import { PageLinkGroup, TopLevelLink } from "~/models/navigation";
 
 interface MobileNavigationStoreState {
   isOpen: boolean;
@@ -29,7 +30,15 @@ export const useMobileNavigationStore = create<MobileNavigationStoreState>(
   })
 );
 
-export const MobileNavigation: FC = () => {
+export interface MobileNavigationProps {
+  topLevelLinks: TopLevelLink[];
+  pageLinkGroups: PageLinkGroup[];
+}
+
+export const MobileNavigation: FC<MobileNavigationProps> = ({
+  topLevelLinks,
+  pageLinkGroups,
+}) => {
   const isInsideMobileNavigation = useIsInsideMobileNavigation();
   const { isOpen, toggle, close } = useMobileNavigationStore();
   const ToggleIcon = isOpen ? XIcon : MenuIcon;
@@ -38,11 +47,11 @@ export const MobileNavigation: FC = () => {
     <IsInsideMobileNavigationContext.Provider value={true}>
       <button
         type="button"
-        className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-gray-900/5 dark:hover:bg-white/5"
+        className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-gray-950/5 dark:hover:bg-white/5"
         aria-label="Toggle navigation"
         onClick={toggle}
       >
-        <ToggleIcon className="w-2.5 stroke-gray-900 dark:stroke-white" />
+        <ToggleIcon className="w-2.5 text-gray-900 dark:text-white" />
       </button>
 
       {!isInsideMobileNavigation && (
@@ -70,7 +79,10 @@ export const MobileNavigation: FC = () => {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Header />
+                <Header
+                  topLevelLinks={topLevelLinks}
+                  pageLinkGroups={pageLinkGroups}
+                />
               </Transition.Child>
 
               <Transition.Child
@@ -84,9 +96,12 @@ export const MobileNavigation: FC = () => {
               >
                 <motion.div
                   layoutScroll
-                  className="fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6 shadow-lg shadow-gray-900/10 ring-1 ring-gray-900/7.5 dark:bg-gray-900 dark:ring-gray-800 min-[416px]:max-w-sm sm:px-6 sm:pb-10"
+                  className="fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6 shadow-lg shadow-gray-900/10 ring-1 ring-gray-900/7.5 dark:bg-gray-950 dark:ring-gray-800 min-[416px]:max-w-sm sm:px-6 sm:pb-10"
                 >
-                  <Navigation />
+                  <Navigation
+                    topLevelLinks={topLevelLinks}
+                    pageLinkGroups={pageLinkGroups}
+                  />
                 </motion.div>
               </Transition.Child>
             </Dialog.Panel>

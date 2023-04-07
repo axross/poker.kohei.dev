@@ -1,17 +1,17 @@
-import { ComponentType } from "react";
+import { ComponentType, SVGAttributes } from "react";
 
-export interface TopLevelNavigationItem {
+export interface TopLevelLink {
   title: string;
   href: string;
 }
 
-export interface NavigationGroup {
+export interface PageLinkGroup {
   title: string;
   links: { title: string; href: string }[];
 }
 
 export interface SocialLink {
-  icon: ComponentType;
+  icon: ComponentType<SVGAttributes<SVGSVGElement>>;
   href: string;
   label: string;
 }

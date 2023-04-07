@@ -22,7 +22,7 @@ const Note: FC<NoteProps> = ({ className, children, ...props }) => {
       )}
       {...props}
     >
-      <InfoIcon className="mt-1 h-4 w-4 flex-none fill-emerald-500 stroke-white dark:fill-emerald-200/20 dark:stroke-emerald-200" />
+      <InfoIcon className="mt-1 h-4 w-4 flex-none text-emerald-500 dark:text-emerald-200 dark:text-emerald-200/20" />
 
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}

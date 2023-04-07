@@ -1,9 +1,9 @@
 import { DiscordIcon } from "~/components/icons/discord-icon";
 import { GitHubIcon } from "~/components/icons/github-icon";
-import { TwitterIcon } from "~/components/icons/twitterI-icon";
-import { NavigationGroup, SocialLink, TopLevelNavigationItem } from "~/models/navigation";
+import { TwitterIcon } from "~/components/icons/twitter-icon";
+import { PageLinkGroup, SocialLink, TopLevelLink } from "~/models/navigation";
 
-export const topLevelNavigationItems: TopLevelNavigationItem[] = [
+export const topLevelLinks: TopLevelLink[] = [
   {
     title: "API",
     href: "/",
@@ -18,7 +18,7 @@ export const topLevelNavigationItems: TopLevelNavigationItem[] = [
   },
 ];
 
-export const navigationGroups: NavigationGroup[] = [
+export const pageLinkGroups: PageLinkGroup[] = [
   {
     title: "Guides",
     links: [
@@ -47,16 +47,16 @@ export const socialLinks: SocialLink[] = [
   {
     icon: TwitterIcon,
     href: "#",
-    label: "Follow me on Twitter",
+    label: "Follow us on Twitter",
   },
   {
     icon: GitHubIcon,
     href: "#",
-    label: "Follow me on GitHub",
+    label: "Follow us on GitHub",
   },
   {
     icon: DiscordIcon,
     href: "#",
     label: "Join our Discord server",
   },
-]
+];

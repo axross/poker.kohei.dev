@@ -11,7 +11,7 @@ export const XIcon = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
         ref={ref}
         {...props}
       >
-        <path d="m1.5 1 7 7M8.5 1l-7 7" />
+        <path fill="none" stroke="currentColor" d="m1.5 1 7 7M8.5 1l-7 7" />
       </svg>
     );
   }

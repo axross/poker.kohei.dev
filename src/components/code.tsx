@@ -13,8 +13,8 @@ import {
 } from "react";
 import { twMerge } from "tailwind-merge";
 import { create } from "zustand";
-import { Tag } from "~/components/tag";
 import { ClipboardIcon } from "~/components/icons/clipboard-icon";
+import { Tag } from "~/components/tag";
 
 const languageNames = {
   js: "JavaScript",
@@ -77,7 +77,7 @@ const CopyButton: FC<CopyButtonProps> = ({ code, className, ...props }) => {
           copied && "-translate-y-1.5 opacity-0"
         )}
       >
-        <ClipboardIcon className="h-5 w-5 fill-gray-500/20 stroke-gray-500 transition-colors group-hover/button:stroke-gray-400" />
+        <ClipboardIcon className="h-5 w-5 text-gray-500 transition-colors group-hover/button:text-gray-400" />
         Copy
       </span>
       <span
@@ -145,7 +145,7 @@ const CodePanel: FC<CodePanelProps> = ({
   children,
   ...props
 }) => {
-  let child = Children.only(children) as ReactElement<{
+  const child = Children.only(children) as ReactElement<{
     tag: string;
     label: string;
     code: string;
@@ -177,7 +177,7 @@ const CodeGroupHeader: FC<CodeGroupHeader> = ({
   className,
   ...props
 }) => {
-  let hasTabs = Children.count(children) > 1;
+  const hasTabs = Children.count(children) > 1;
 
   if (!title && !hasTabs) {
     return null;
@@ -219,7 +219,7 @@ const CodeGroupHeader: FC<CodeGroupHeader> = ({
 type CodeGroupPanelsProps = CodePanelProps;
 
 const CodeGroupPanels: FC<CodeGroupPanelsProps> = ({ children, ...props }) => {
-  let hasTabs = Children.count(children) > 1;
+  const hasTabs = Children.count(children) > 1;
 
   if (hasTabs) {
     return (
@@ -285,19 +285,19 @@ const usePreferredLanguageStore = create<PreferredLanguageStoreState>(
 );
 
 function useTabGroupProps(availableLanguages: string[]) {
-  let { preferredLanguages, addPreferredLanguage } =
+  const { preferredLanguages, addPreferredLanguage } =
     usePreferredLanguageStore();
-  let [selectedIndex, setSelectedIndex] = useState(0);
-  let activeLanguage = [...availableLanguages].sort(
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const activeLanguage = [...availableLanguages].sort(
     (a, z) => preferredLanguages.indexOf(z) - preferredLanguages.indexOf(a)
   )[0];
-  let languageIndex = availableLanguages.indexOf(activeLanguage);
-  let newSelectedIndex = languageIndex === -1 ? selectedIndex : languageIndex;
+  const languageIndex = availableLanguages.indexOf(activeLanguage);
+  const newSelectedIndex = languageIndex === -1 ? selectedIndex : languageIndex;
   if (newSelectedIndex !== selectedIndex) {
     setSelectedIndex(newSelectedIndex);
   }
 
-  let { positionRef, preventLayoutShift } = usePreventLayoutShift();
+  const { positionRef, preventLayoutShift } = usePreventLayoutShift();
 
   return {
     as: "div",
@@ -355,7 +355,7 @@ export interface CodeProps extends HTMLAttributes<HTMLElement> {
 }
 
 export const Code: FC<CodeProps> = ({ children, ...props }) => {
-  let isGrouped = useContext(CodeGroupContext);
+  const isGrouped = useContext(CodeGroupContext);
 
   if (isGrouped) {
     return <code {...props} dangerouslySetInnerHTML={{ __html: children }} />;
@@ -367,7 +367,7 @@ export const Code: FC<CodeProps> = ({ children, ...props }) => {
 export type PreProps = any;
 
 export const Pre: FC<PreProps> = ({ children, ...props }) => {
-  let isGrouped = useContext(CodeGroupContext);
+  const isGrouped = useContext(CodeGroupContext);
 
   if (isGrouped) {
     return children;

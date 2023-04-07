@@ -11,7 +11,7 @@ export const MenuIcon = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
         ref={ref}
         {...props}
       >
-        <path d="M.5 1h9M.5 8h9M.5 4.5h9" />
+        <path fill="none" stroke="currentColor" d="M.5 1h9M.5 8h9M.5 4.5h9" />
       </svg>
     );
   }

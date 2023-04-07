@@ -9,8 +9,8 @@ import {
   type HighlightResult,
   type ObjectWithObjectID,
 } from "@algolia/client-search";
-import algoliasearch from "algoliasearch/lite";
 import { Dialog, Transition } from "@headlessui/react";
+import algoliasearch from "algoliasearch/lite";
 import { useRouter } from "next/router";
 import {
   FC,
@@ -222,7 +222,7 @@ const SearchResults: FC<SearchResultsProps> = ({
   if (collection.items.length === 0) {
     return (
       <div className="p-6 text-center">
-        <NoResultsIcon className="mx-auto h-5 w-5 stroke-gray-900 dark:stroke-gray-600" />
+        <NoResultsIcon className="mx-auto h-5 w-5 text-gray-900 dark:text-gray-600" />
 
         <p className="mt-2 text-xs text-gray-700 dark:text-gray-400">
           {"Nothing found for "}
@@ -264,7 +264,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 
     return (
       <div className="group relative flex h-12">
-        <SearchIcon className="pointer-events-none absolute left-3 top-0 h-full w-5 stroke-gray-500" />
+        <SearchIcon className="pointer-events-none absolute left-3 top-0 h-full w-5 text-gray-500" />
 
         <input
           ref={inputRef}
@@ -291,7 +291,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
         />
         {autocompleteState.status === "stalled" && (
           <div className="absolute inset-y-0 right-3 flex items-center">
-            <LoadingIcon className="h-5 w-5 animate-spin stroke-gray-200 text-gray-900 dark:stroke-gray-800 dark:text-emerald-400" />
+            <LoadingIcon className="h-5 w-5 animate-spin text-gray-200 dark:text-gray-800" />
           </div>
         )}
       </div>
@@ -495,8 +495,10 @@ export const Search: FC<SearchProps> = ({ className, ...props }) => {
         className="hidden h-8 w-full items-center gap-2 rounded-full bg-white pl-2 pr-3 text-sm text-gray-500 ring-1 ring-gray-900/10 transition hover:ring-gray-900/20 dark:bg-white/5 dark:text-gray-400 dark:ring-inset dark:ring-white/10 dark:hover:ring-white/20 lg:flex focus:[&:not(:focus-visible)]:outline-none"
         {...buttonProps}
       >
-        <SearchIcon className="h-5 w-5 stroke-current" />
-        Find something...
+        <SearchIcon className="h-5 w-5 text-current" />
+
+        {"Find something..."}
+
         <kbd className="ml-auto text-2xs text-gray-400 dark:text-gray-500">
           <kbd className="font-sans">{modifierKey}</kbd>
           <kbd className="font-sans">K</kbd>
@@ -524,7 +526,7 @@ export const MobileSearch: FC<MobileSearchProps> = ({
         aria-label="Find something..."
         {...buttonProps}
       >
-        <SearchIcon className="h-5 w-5 stroke-gray-900 dark:stroke-white" />
+        <SearchIcon className="h-5 w-5 text-gray-900 dark:text-white" />
       </button>
 
       <SearchDialog className="lg:hidden" {...dialogProps} />

@@ -1,0 +1,17 @@
+html {
+  @apply h-[100vh] text-base;
+}
+
+body,
+body .docs-story {
+  @apply bg-white text-slate-700 antialiased transition-colors;
+}
+
+body {
+  @apply h-[100vh];
+}
+
+body.dark,
+body.dark .docs-story {
+  @apply bg-gray-950 text-slate-200;
+}

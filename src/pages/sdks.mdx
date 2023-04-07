@@ -1,4 +1,9 @@
-import { Libraries } from '~/components/libraries'
+import { Libraries, Library } from '~/components/libraries'
+import logoGo from "~/images/logos/go.svg";
+import logoNode from "~/images/logos/node.svg";
+import logoPhp from "~/images/logos/php.svg";
+import logoPython from "~/images/logos/python.svg";
+import logoRuby from "~/images/logos/ruby.svg";
 
 export const description =
   'Protocol offers fine-tuned JavaScript, Ruby, PHP, Python, and Go libraries to make your life easier and give you the best experience when consuming the API.'
@@ -11,4 +16,39 @@ export const sections = [
 
 The recommended way to interact with the Protocol API is by using one of our official SDKs. Today, Protocol offers fine-tuned JavaScript, Ruby, PHP, Python, and Go libraries to make your life easier and give you the best experience when consuming the API. {{ className: 'lead' }}
 
-<Libraries />
+<Libraries>
+  <Library
+    href="#"
+    name="PHP"
+    description="A popular general-purpose scripting language that is especially suited to web development."
+    logo={logoPhp}
+  />
+
+  <Library
+    href="#"
+    name="Ruby"
+    description="A dynamic, open source programming language with a focus on simplicity and productivity."
+    logo={logoRuby}
+  />
+
+  <Library
+    href="#"
+    name="Node.js"
+    description="Node.js® is an open-source, cross-platform JavaScript runtime environment."
+    logo={logoNode}
+  />
+
+  <Library
+    href="#"
+    name="Python"
+    description="Python is a programming language that lets you work quickly and integrate systems more effectively."
+    logo={logoPython}
+  />
+
+  <Library
+    href="#"
+    name="Go"
+    description="An open-source programming language supported by Google with built-in concurrency."
+    logo={logoGo}
+  />
+</Libraries>

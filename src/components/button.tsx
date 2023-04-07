@@ -30,13 +30,13 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(
       <Component
         href={href as never}
         className={twMerge(
-          "inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium outline-none transition focus-within:ring-2 focus-within:ring-emerald-500 focus-within:ring-offset-2 dark:focus-within:ring-offset-gray-950 ",
+          "inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium outline-none transition focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-950 ",
           variant === "primary" &&
-            "rounded-full bg-emerald-600 px-3 py-1 text-white hover:bg-gray-800 dark:border dark:border-emerald-400/20 dark:bg-emerald-500/10 dark:text-emerald-400 dark:hover:border-emerald-500 dark:hover:bg-emerald-400/10 dark:hover:text-emerald-300",
+            "rounded-full border border-transparent bg-emerald-600 px-3 py-1 text-white hover:bg-emerald-500 dark:border-emerald-400/20 dark:bg-emerald-500/10 dark:text-emerald-400 dark:hover:border-emerald-500 dark:hover:bg-emerald-400/10 dark:hover:text-emerald-300",
           variant === "secondary" &&
-            "rounded-full bg-gray-100 px-3 py-1 text-gray-950 hover:bg-gray-200 dark:bg-gray-800/40 dark:text-gray-400 dark:ring-1 dark:ring-inset dark:ring-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-300",
+            "rounded-full border border-transparent bg-gray-200 px-3 py-1 text-gray-700  hover:bg-gray-300 hover:text-gray-950 dark:border-gray-50/10 dark:bg-gray-50/5 dark:text-gray-300 dark:hover:border-gray-50/20 dark:hover:bg-gray-50/10 dark:hover:text-gray-50",
           variant === "filled" &&
-            "rounded-full bg-gray-900 px-3 py-1 text-white hover:bg-gray-700 dark:bg-emerald-500 dark:text-white dark:hover:bg-emerald-400",
+            "rounded-full border border-transparent bg-gray-800 px-3 py-1 text-gray-100 hover:bg-gray-950 hover:text-white dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-gray-50 dark:hover:text-gray-950",
           variant === "outline" &&
             "rounded-full border border-gray-950/20 bg-transparent px-3 py-1 text-gray-800 hover:bg-gray-900/5 hover:text-gray-950 dark:border dark:border-gray-50/20 dark:text-gray-200 dark:hover:bg-gray-50/5 dark:hover:text-gray-50",
           variant === "text" &&

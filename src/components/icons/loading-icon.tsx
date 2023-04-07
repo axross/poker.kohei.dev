@@ -2,7 +2,7 @@ import { SVGProps, forwardRef, useId } from "react";
 
 export const LoadingIcon = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
   (props, ref) => {
-    let id = useId();
+    const id = useId();
 
     return (
       <svg
@@ -13,12 +13,14 @@ export const LoadingIcon = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
         {...props}
       >
         <circle cx="10" cy="10" r="5.5" strokeLinejoin="round" />
+
         <path
           stroke={`url(#${id})`}
           strokeLinecap="round"
           strokeLinejoin="round"
           d="M15.5 10a5.5 5.5 0 1 0-5.5 5.5"
         />
+
         <defs>
           <linearGradient
             id={id}
@@ -29,6 +31,7 @@ export const LoadingIcon = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="currentColor" />
+
             <stop offset="1" stopColor="currentColor" stopOpacity="0" />
           </linearGradient>
         </defs>

@@ -11,13 +11,13 @@ import {
 } from "~/components/mobile-navigation";
 import { ModeToggle } from "~/components/mode-toggle";
 import { MobileSearch, Search } from "~/components/search";
-import { topLevelNavigationItems } from "~/constants/navigation";
+import { PageLinkGroup, TopLevelLink } from "~/models/navigation";
 
-interface TopLevelNavItemProps extends HTMLAttributes<HTMLLIElement> {
+interface TopLevelNavProps extends HTMLAttributes<HTMLLIElement> {
   href: ComponentProps<typeof Link>["href"];
 }
 
-const TopLevelNavItem: FC<TopLevelNavItemProps> = ({
+const TopLevelNav: FC<TopLevelNavProps> = ({
   href,
   className,
   children,
@@ -37,16 +37,19 @@ const TopLevelNavItem: FC<TopLevelNavItemProps> = ({
   );
 };
 
-export interface HeaderProps extends ComponentProps<typeof motion.div> {}
+export interface HeaderProps extends ComponentProps<typeof motion.div> {
+  topLevelLinks: TopLevelLink[];
+  pageLinkGroups: PageLinkGroup[];
+}
 
 export const Header = forwardRef<HTMLDivElement, HeaderProps>(
-  ({ className, ...props }, ref) => {
-    let { isOpen: mobileNavIsOpen } = useMobileNavigationStore();
-    let isInsideMobileNavigation = useIsInsideMobileNavigation();
+  ({ topLevelLinks, pageLinkGroups, className, ...props }, ref) => {
+    const { isOpen: mobileNavIsOpen } = useMobileNavigationStore();
+    const isInsideMobileNavigation = useIsInsideMobileNavigation();
 
-    let { scrollY } = useScroll();
-    let bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9]);
-    let bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8]);
+    const { scrollY } = useScroll();
+    const bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9]);
+    const bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8]);
 
     return (
       <motion.div
@@ -56,8 +59,8 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(
           !isInsideMobileNavigation &&
             "backdrop-blur-sm dark:backdrop-blur lg:left-72 xl:left-80",
           isInsideMobileNavigation
-            ? "bg-white dark:bg-gray-900"
-            : "bg-white/[var(--bg-opacity-light)] dark:bg-gray-900/[var(--bg-opacity-dark)]",
+            ? "bg-white dark:bg-gray-950"
+            : "bg-white/[var(--bg-opacity-light)] dark:bg-gray-950/[var(--bg-opacity-dark)]",
           className
         )}
         style={
@@ -72,31 +75,42 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(
           className={twMerge(
             "absolute inset-x-0 top-full h-px transition",
             (isInsideMobileNavigation || !mobileNavIsOpen) &&
-              "bg-gray-900/7.5 dark:bg-white/7.5"
+              "bg-gray-950/7.5 dark:bg-white/7.5"
           )}
         />
+
         <Search />
+
         <div className="flex items-center gap-5 lg:hidden">
-          <MobileNavigation />
+          <MobileNavigation
+            topLevelLinks={topLevelLinks}
+            pageLinkGroups={pageLinkGroups}
+          />
+
           <Link href="/" aria-label="Home">
             <Logo className="h-6" />
           </Link>
         </div>
+
         <div className="flex items-center gap-5">
           <nav className="hidden md:block">
             <ul role="list" className="flex items-center gap-8">
-              {topLevelNavigationItems.map(({ title, href }) => (
-                <TopLevelNavItem href={href} key={`${title}-${href}`}>
+              {topLevelLinks.map(({ title, href }) => (
+                <TopLevelNav href={href} key={`${title}-${href}`}>
                   {title}
-                </TopLevelNavItem>
+                </TopLevelNav>
               ))}
             </ul>
           </nav>
+
           <div className="hidden md:block md:h-5 md:w-px md:bg-gray-900/10 md:dark:bg-white/15" />
+
           <div className="flex gap-4">
             <MobileSearch />
+
             <ModeToggle />
           </div>
+
           <div className="hidden min-[416px]:contents">
             <Button href="#">Sign in</Button>
           </div>

@@ -7,8 +7,13 @@ import { FC } from "react";
 import { Layout } from "~/components/layout";
 import { mdxComponents } from "~/components/mdx";
 import { useMobileNavigationStore } from "~/components/mobile-navigation";
-import "~/styles/tailwind.css";
-import "katex/dist/katex.min.css";
+import {
+  pageLinkGroups,
+  socialLinks,
+  topLevelLinks,
+} from "~/constants/navigation";
+import "katex/dist/latex.min.css";
+import "~/globals.css";
 
 function onRouteChange() {
   useMobileNavigationStore.getState().close();
@@ -17,8 +22,11 @@ function onRouteChange() {
 Router.events.on("routeChangeStart", onRouteChange);
 Router.events.on("hashChangeStart", onRouteChange);
 
-const App: FC<AppProps> = ({ Component, pageProps }) => {
-  let router = useRouter();
+const App: FC<AppProps> = ({
+  Component,
+  pageProps: { sections, ...pageProps },
+}) => {
+  const router = useRouter();
 
   return (
     <>
@@ -32,7 +40,12 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
 
       <MDXProvider components={mdxComponents}>
-        <Layout {...pageProps}>
+        <Layout
+          sections={sections}
+          topLevelLinks={topLevelLinks}
+          pageLinkGroups={pageLinkGroups}
+          socialLinks={socialLinks}
+        >
           <Component {...pageProps} />
         </Layout>
       </MDXProvider>

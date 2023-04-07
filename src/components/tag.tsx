@@ -27,7 +27,7 @@ export const Tag = forwardRef<HTMLElement, TagProps>(
     return (
       <span
         className={twMerge(
-          "font-mono text-[0.625rem] font-semibold leading-6",
+          "inline-block font-mono text-[0.625rem] font-semibold leading-6",
           variant === "medium" && "rounded-lg px-1.5 ring-1 ring-inset",
           color === "emerald" &&
             variant === "small" &&
