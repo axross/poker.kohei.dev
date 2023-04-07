@@ -1,7 +1,7 @@
-import type { Preview } from "@storybook/react";
-import { useLayoutEffect } from "react";
-import "~/globals.css";
 import "./globals.css";
+import type { Preview } from "@storybook/react";
+import * as React from "react";
+import "~/globals.css";
 
 const preview: Preview = {
   parameters: {
@@ -13,9 +13,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: globalThis.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light",
+      disable: true,
       grid: {
         cellSize: 16,
         opacity: 0.25,
@@ -23,31 +21,40 @@ const preview: Preview = {
         offsetX: 8,
         offsetY: 8,
       },
-      values: [
-        {
-          name: "light",
-          value: "#ffffff",
-        },
-        {
-          name: "dark",
-          value: "#111111",
-        },
-      ],
+    },
+  },
+  globalTypes: {
+    theme: {
+      name: "Theme",
+      description: "Tailwind theme for components",
+      defaultTheme: globalThis.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light",
+      toolbar: {
+        icon: "photo",
+        items: [
+          { value: "light", right: "☀️", title: "Light" },
+          { value: "dark", right: "🌙", title: "Dark" },
+        ],
+        showName: true,
+        dynamicTitle: true,
+      },
     },
   },
   decorators: [
     (Story, context) => {
-      useLayoutEffect(() => {
-        if (context.globals.backgrounds?.value === "#111111") {
+      React.useLayoutEffect(() => {
+        if (context.globals.theme === "dark") {
           globalThis.document.body.classList.add("dark");
         } else {
           globalThis.document.body.classList.remove("dark");
         }
-      }, [context.globals.backgrounds.value]);
+      }, [context.globals.theme]);
 
       return Story();
     },
-  ]
+  ],
 };
 
 export default preview;
