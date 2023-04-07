@@ -1,10 +1,13 @@
+import googleAnalytics from "@analytics/google-analytics";
 import { MDXProvider } from "@mdx-js/react";
+import Analytics from "analytics";
 import "focus-visible";
 import "katex/dist/katex.min.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { Router, useRouter } from "next/router";
-import { FC } from "react";
+import Script from "next/script";
+import { FC, useLayoutEffect } from "react";
 import { Layout } from "~/components/layout";
 import { mdxComponents } from "~/components/mdx";
 import { useMobileNavigationStore } from "~/components/mobile-navigation";
@@ -22,20 +25,42 @@ function onRouteChange() {
 Router.events.on("routeChangeStart", onRouteChange);
 Router.events.on("hashChangeStart", onRouteChange);
 
+const analytics = Analytics({
+  app: "poker.kohei.dev",
+  plugins: [
+    googleAnalytics({
+      measurementIds: ["G-0WFD0CNM7Y"],
+    }),
+  ],
+});
+
 const App: FC<AppProps> = ({
   Component,
   pageProps: { sections, ...pageProps },
 }) => {
   const router = useRouter();
+  const pageTitle =
+    router.pathname === "/"
+      ? "poker.kohei.dev"
+      : `${pageProps.title} - poker.kohei.dev`;
+
+  useLayoutEffect(() => {
+    const onRouteChangeComplete = () => {
+      analytics.page();
+    };
+
+    router.events.on("routeChangeComplete", onRouteChangeComplete);
+
+    analytics.page();
+
+    return () =>
+      router.events.off("routeChangeComplete", onRouteChangeComplete);
+  }, []);
 
   return (
     <>
       <Head>
-        {router.pathname === "/" ? (
-          <title>Protocol API Reference</title>
-        ) : (
-          <title>{`${pageProps.title} - Protocol API Reference`}</title>
-        )}
+        <title>{pageTitle}</title>
         <meta name="description" content={pageProps.description} />
       </Head>
 
