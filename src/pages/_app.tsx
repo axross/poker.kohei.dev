@@ -11,6 +11,7 @@ import { FC, useLayoutEffect } from "react";
 import { Layout } from "~/components/layout";
 import { mdxComponents } from "~/components/mdx";
 import { useMobileNavigationStore } from "~/components/mobile-navigation";
+import { TooltipProvider } from "~/components/tooltip";
 import {
   pageLinkGroups,
   socialLinks,
@@ -65,14 +66,16 @@ const App: FC<AppProps> = ({
       </Head>
 
       <MDXProvider components={mdxComponents}>
-        <Layout
-          sections={sections}
-          topLevelLinks={topLevelLinks}
-          pageLinkGroups={pageLinkGroups}
-          socialLinks={socialLinks}
-        >
-          <Component {...pageProps} />
-        </Layout>
+        <TooltipProvider>
+          <Layout
+            sections={sections}
+            topLevelLinks={topLevelLinks}
+            pageLinkGroups={pageLinkGroups}
+            socialLinks={socialLinks}
+          >
+            <Component {...pageProps} />
+          </Layout>
+        </TooltipProvider>
       </MDXProvider>
     </>
   );

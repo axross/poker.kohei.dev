@@ -36,7 +36,13 @@ module.exports = {
         7.5: '0.075',
         15: '0.15',
       },
+      fontFamily: {
+        "card-symbol": ["var(--font-azeret-mono)", "ui-monospace"],
+      },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require("@tailwindcss/container-queries"),
+  ],
 }
