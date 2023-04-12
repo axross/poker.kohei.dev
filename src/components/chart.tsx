@@ -92,7 +92,7 @@ export const ChartContainer: FC<ChartContainerProps> = ({
   return (
     <div
       className={twMerge(
-        "mx-auto mt-4 w-full max-w-md [--chart-axis-color:theme(colors.gray.500/50)] [--chart-foreground-color:theme(colors.pink.500)]",
+        "mx-auto mt-4 w-full max-w-md [--chart-axis-color:theme(colors.gray.500/50)] [--chart-foreground-color:theme(colors.emerald.500)]",
         className
       )}
       {...props}

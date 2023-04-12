@@ -1,13 +1,66 @@
 import { HeroPattern } from "~/components/hero-pattern"
+import { Resource, Resources } from "~/components/resources";
+import { BillMagnetIcon } from "~/components/icons/bill-magnet-icon";
+import { ChessIcon } from "~/components/icons/chess-icon";
+import { OnlineClassMathIcon } from "~/components/icons/online-class-math-icon";
+import { SplineChartIcon } from "~/components/icons/spline-chart-icon";
 
 <HeroPattern />
 
-# このウェブサイトについて
+# はじめに
 
-このウェブサイトは、僕（Kohei）がポーカーを勉強する中で知ったことをまとめたノートです。とりとめのない記述があったり、正確でない内容があったりします。ご容赦ください。
+このウェブサイトは、僕 ([Kohei](https://github.com/axross)) がポーカーを勉強する中で知ったことをまとめたノートです。とりとめのない記述があったり、正確でない内容があったりします。ご容赦ください。
 
 対象読者として、ポーカーの中級者で、中学数学の理解がある人を意識しています。僕がソフトウェアエンジニアなので、ソフトウェアエンジニア的な視点での書き方をしていることもあります。初めたばかりの人には色々と難しい内容も含まれているかもしれません。
 
 また、このウェブサイトは全てノーリミットテキサスホールデムを前提としています。指定なく「ポーカー」と表記があれば、それはノーリミットテキサスホールデムのことを指していると思ってください。
 
-フィードバックは各ページの「Edit this page」ボタンか、[yo@kohei.dev](yo@kohei.dev)までどうぞ。
+フィードバック [yo@kohei.dev](yo@kohei.dev) までお願いします。
+
+## GTO基礎 {{ id: "gto-basic" }}
+
+<Resources>
+  <Resource
+    href="/gto-basic/game-theory-101"
+    name="GTOとゲーム理論"
+    description="GTOではゲーム理論由来の用語や概念が数多く出てきます。説明する上で必要な最低限の知識をカバーできるように解説してみます。"
+    icon={ChessIcon}
+    pattern={{
+      y: 16,
+      squares: [[0, 1], [1, 3]],
+    }}
+  />
+
+  <Resource
+    href="/gto-basic/quantifying-hands"
+    name="ハンドの能力の定量化"
+    description="A8oのようなハンドと87sのようなハンドではどちらが強いと言えるでしょうか。ハンドの性能をどのように定量化するか解説してみます。"
+    icon={OnlineClassMathIcon}
+    pattern={{
+      y: -6,
+      squares: [[-1, 2], [1, 3]],
+    }}
+  />
+
+  <Resource
+    href="/gto-basic/range-advantage-and-its-transition"
+    name="レンジアドバンテージとその変遷"
+    description="ハンドレンジの強さを比較するにはどうしたらいいか、そしてそのアドバンテージがどのようにアクションの決定に関わるのか見てみます。"
+    icon={SplineChartIcon}
+    pattern={{
+      y: 32,
+      squares: [[0, 2], [1, 4]],
+    }}
+  />
+
+  <Resource
+    href="/gto-basic/mechanics-of-bet-size-and-bet-frequency"
+    name="ベットサイズとベット頻度の力学"
+    description="ベットサイズとベット頻度は均衡戦略の上でどのように相互に影響するのか、簡単な数学を使って確認してみます。"
+    icon={BillMagnetIcon}
+    pattern={{
+      y: 22,
+      squares: [[0, 1]],
+    }}
+  />
+</Resources>

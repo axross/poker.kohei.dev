@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Preview } from "@storybook/react";
 import * as React from "react";
+import { TooltipProvider } from "~/components/tooltip";
 import "~/globals.css";
 
 const preview: Preview = {
@@ -54,6 +55,7 @@ const preview: Preview = {
 
       return Story();
     },
+    (Story) => <TooltipProvider>{Story()}</TooltipProvider>,
   ],
 };
 

@@ -16,7 +16,6 @@ import {
 } from "react";
 import { twMerge } from "tailwind-merge";
 import { GridPattern, GridPatternProps } from "~/components/grid-pattern";
-import { Heading } from "~/components/heading";
 
 interface ResourceIconProps extends HTMLAttributes<HTMLElement> {
   icon: ComponentType<SVGAttributes<SVGSVGElement>>;
@@ -93,14 +92,14 @@ export const Resources: FC<ResourcesProps> = ({
   ...props
 }) => {
   return (
-    <div className={twMerge("my-16 xl:max-w-none", className)} {...props}>
-      <Heading level={2} id="resources">
-        Resources
-      </Heading>
-
-      <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-gray-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
-        {children}
-      </div>
+    <div
+      className={twMerge(
+        "not-prose mt-4 grid grid-cols-1 gap-8 border-t border-gray-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-4",
+        className
+      )}
+      {...props}
+    >
+      {children}
     </div>
   );
 };

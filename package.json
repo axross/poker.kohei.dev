@@ -9,8 +9,8 @@
     "build": "npm run build-next && npm run build-sb",
     "build-next": "next build",
     "build-sb": "storybook build",
-    "format": "prettier --write ./src/**/**.{ts,tsx} ./mdx/**/**.mjs",
-    "lint": "prettier --list-different ./src/**/**.{ts,tsx} ./mdx/**/**.mjs && next lint"
+    "format": "prettier --write './src/**/*.{ts,tsx}' './mdx/**/*.mjs'",
+    "lint": "prettier --list-different './src/**/*.{ts,tsx}' './mdx/**/*.mjs' && next lint"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
@@ -21,6 +21,7 @@
     "@mdx-js/loader": "^2.1.5",
     "@mdx-js/react": "^2.1.5",
     "@next/mdx": "^13.0.3",
+    "@radix-ui/react-tooltip": "^1.0.5",
     "@sindresorhus/slugify": "^2.1.1",
     "@tailwindcss/typography": "^0.5.8",
     "acorn": "^8.8.1",
@@ -58,6 +59,7 @@
     "@storybook/nextjs": "^7.0.2",
     "@storybook/react": "^7.0.2",
     "@storybook/testing-library": "^0.1.0",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "concurrently": "^8.0.1",
     "eslint": "8.26.0",

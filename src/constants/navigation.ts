@@ -20,28 +20,27 @@ export const topLevelLinks: TopLevelLink[] = [
 
 export const pageLinkGroups: PageLinkGroup[] = [
   {
-    title: "はじめに",
-    links: [
-      { title: "このウェブサイトについて", href: "/" },
-      { title: "ゲーム理論とナッシュ均衡", href: "/game-theory-101" },
-      { title: "ポーカーとはどんなゲームか", href: "/what-is-poker-actually" },
-    ],
+    title: "イントロダクション",
+    links: [{ title: "はじめに", href: "/" }],
   },
   {
     title: "GTO基礎",
     links: [
-      { title: "ハンドの性能の定量化", href: "/gto-basic/quantifying-hands" },
       {
-        title: "ハンドレンジの分類と観点",
-        href: "/gto-basic/categorizing-hand-ranges",
+        title: "GTOとゲーム理論",
+        href: "/gto-basic/game-theory-101",
       },
       {
-        title: "レンジアドバンテージの活用",
+        title: "ハンドの能力の定量化",
+        href: "/gto-basic/quantifying-hand-performance",
+      },
+      {
+        title: "レンジアドバンテージとその転遷",
         href: "/gto-basic/range-advantage-and-its-transition",
       },
       {
-        title: "ベットにまつわる均衡",
-        href: "/gto-basic/betting-in-equilibrium",
+        title: "ベットサイズとベット頻度の力学",
+        href: "/gto-basic/mechanics-of-bet-size-and-bet-frequency",
       },
     ],
   },
