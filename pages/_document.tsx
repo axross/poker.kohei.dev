@@ -40,11 +40,37 @@ const Document: FC = () => {
   return (
     <Html lang="en">
       <Head>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="128x128"
+          href="/favicon-128.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="180x180"
+          href="/favicon-180.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="/favicon-192.png"
+        />
+
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </Head>
 
       <body className="bg-white antialiased dark:bg-gray-950">
         <Main />
+
         <NextScript />
       </body>
     </Html>
